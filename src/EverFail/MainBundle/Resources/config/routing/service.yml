@@ -1,0 +1,30 @@
+service:
+    pattern:  /
+    defaults: { _controller: "EverFailMainBundle:Service:index" }
+
+service_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EverFailMainBundle:Service:show" }
+
+service_new:
+    pattern:  /new
+    defaults: { _controller: "EverFailMainBundle:Service:new" }
+
+service_create:
+    pattern:  /create
+    defaults: { _controller: "EverFailMainBundle:Service:create" }
+    requirements: { _method: post }
+
+service_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EverFailMainBundle:Service:edit" }
+
+service_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EverFailMainBundle:Service:update" }
+    requirements: { _method: post|put }
+
+service_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EverFailMainBundle:Service:delete" }
+    requirements: { _method: post|delete }

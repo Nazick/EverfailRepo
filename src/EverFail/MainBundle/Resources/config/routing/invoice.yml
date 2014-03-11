@@ -1,0 +1,30 @@
+invoice:
+    pattern:  /
+    defaults: { _controller: "EverFailMainBundle:Invoice:index" }
+
+invoice_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EverFailMainBundle:Invoice:show" }
+
+invoice_new:
+    pattern:  /new
+    defaults: { _controller: "EverFailMainBundle:Invoice:new" }
+
+invoice_create:
+    pattern:  /create
+    defaults: { _controller: "EverFailMainBundle:Invoice:create" }
+    requirements: { _method: post }
+
+invoice_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EverFailMainBundle:Invoice:edit" }
+
+invoice_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EverFailMainBundle:Invoice:update" }
+    requirements: { _method: post|put }
+
+invoice_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EverFailMainBundle:Invoice:delete" }
+    requirements: { _method: post|delete }

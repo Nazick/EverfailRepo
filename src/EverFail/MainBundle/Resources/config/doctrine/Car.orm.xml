@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="EverFail\MainBundle\Entity\Car" table="car">
+    <unique-constraints>
+      <unique-constraint name="Reg_Number_UNIQUE" columns="Reg_Number"/>
+    </unique-constraints>
+    <id name="id" type="integer" column="ID">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="regNumber" type="string" column="Reg_Number" length="10" nullable="false"/>
+    <field name="model" type="string" column="Model" length="20" nullable="true"/>
+    <field name="manufactureYear" type="date" column="Manufacture_Year" nullable="true"/>
+  </entity>
+</doctrine-mapping>

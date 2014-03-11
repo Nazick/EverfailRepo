@@ -1,0 +1,6 @@
+ever_fail_main:
+    resource: "@EverFailMainBundle/Resources/config/routing.yml"
+    prefix:   /
+
+
+

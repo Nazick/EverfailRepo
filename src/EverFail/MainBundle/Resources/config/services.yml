@@ -1,0 +1,7 @@
+parameters:
+#    ever_fail_main.example.class: EverFail\MainBundle\Example
+
+services:
+#    ever_fail_main.example:
+#        class: %ever_fail_main.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

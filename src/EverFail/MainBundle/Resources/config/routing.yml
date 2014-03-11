@@ -1,0 +1,24 @@
+ever_fail_main_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: EverFailMainBundle:Default:index }
+EverFailMainBundle_category:
+        resource: "@EverFailMainBundle/Resources/config/routing/category.yml"
+        prefix:   /category
+EverFailMainBundle_car:
+        resource: "@EverFailMainBundle/Resources/config/routing/car.yml"
+        prefix:   /car
+EverFailMainBundle_customer:
+        resource: "@EverFailMainBundle/Resources/config/routing/customer.yml"
+        prefix:   /customer
+EverFailMainBundle_invoice:
+        resource: "@EverFailMainBundle/Resources/config/routing/invoice.yml"
+        prefix:   /invoice
+EverFailMainBundle_part:
+        resource: "@EverFailMainBundle/Resources/config/routing/part.yml"
+        prefix:   /part
+EverFailMainBundle_service:
+        resource: "@EverFailMainBundle/Resources/config/routing/service.yml"
+        prefix:   /service
+EverFailMainBundle_vendor:
+        resource: "@EverFailMainBundle/Resources/config/routing/vendor.yml"
+        prefix:   /vendor

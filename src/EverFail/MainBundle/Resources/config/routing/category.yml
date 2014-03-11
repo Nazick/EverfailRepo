@@ -1,0 +1,30 @@
+category:
+    pattern:  /
+    defaults: { _controller: "EverFailMainBundle:Category:index" }
+
+category_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EverFailMainBundle:Category:show" }
+
+category_new:
+    pattern:  /new
+    defaults: { _controller: "EverFailMainBundle:Category:new" }
+
+category_create:
+    pattern:  /create
+    defaults: { _controller: "EverFailMainBundle:Category:create" }
+    requirements: { _method: post }
+
+category_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EverFailMainBundle:Category:edit" }
+
+category_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EverFailMainBundle:Category:update" }
+    requirements: { _method: post|put }
+
+category_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EverFailMainBundle:Category:delete" }
+    requirements: { _method: post|delete }

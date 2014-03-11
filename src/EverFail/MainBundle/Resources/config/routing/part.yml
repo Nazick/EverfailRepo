@@ -1,0 +1,30 @@
+part:
+    pattern:  /
+    defaults: { _controller: "EverFailMainBundle:Part:index" }
+
+part_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "EverFailMainBundle:Part:show" }
+
+part_new:
+    pattern:  /new
+    defaults: { _controller: "EverFailMainBundle:Part:new" }
+
+part_create:
+    pattern:  /create
+    defaults: { _controller: "EverFailMainBundle:Part:create" }
+    requirements: { _method: post }
+
+part_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "EverFailMainBundle:Part:edit" }
+
+part_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "EverFailMainBundle:Part:update" }
+    requirements: { _method: post|put }
+
+part_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "EverFailMainBundle:Part:delete" }
+    requirements: { _method: post|delete }
