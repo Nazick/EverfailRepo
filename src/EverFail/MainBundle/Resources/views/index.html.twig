@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="/EverfailRepo/web/bundles/everfailmain/css/style.css" type="text/css">
+    </head>
+    <body>
+        <div id="header">
+            <div>
+                <div class="logo">
+                    <a href="index.html">Ever Fail</a>
+                </div>
+                <ul id="navigation">
+                    <li class="active">
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a href="features.html">Features</a>
+                    </li>
+                    <li>
+                        <a href="news.html">News</a>
+                    </li>
+                    <li>
+                        <a href="about.html">About</a>
+                    </li>
+                    <li>
+                        <a href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="adbox">
+            <div class="clearfix">
+                <img src="/EverfailRepo/web/bundles/everfailmain/images/box.png" alt="Img" height="342" width="368">
+                <div>
+                    <h1>Ever Fail</h1>
+                    <h2>That's what we live for.</h2>
+                    {% block body %}{% endblock %}
+                    {% block javascripts %}{% endblock %}
+                </div>
+
+            </div>
+        </div>
+         <div id="footer">
+            <div class="clearfix">
+                <div id="connect">
+                    <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a><a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a><a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a><a href="http://www.freewebsitetemplates.com/misc/contact/" target="_blank" class="tumbler"></a>
+                </div>
+                <p>
+                    © PentoZide software solutions. All Rights Reserved.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
