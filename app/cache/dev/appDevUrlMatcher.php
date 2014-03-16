@@ -136,8 +136,17 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // ever_fail_main_homepage
-        if (0 === strpos($pathinfo, '/hello') && preg_match('#^/hello/(?P<name>[^/]++)$#s', $pathinfo, $matches)) {
-            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ever_fail_main_homepage')), array (  '_controller' => 'EverFail\\MainBundle\\Controller\\DefaultController::indexAction',));
+        if (rtrim($pathinfo, '/') === '') {
+            if (substr($pathinfo, -1) !== '/') {
+                return $this->redirect($pathinfo.'/', 'ever_fail_main_homepage');
+            }
+
+            return array (  '_controller' => 'EverFail\\MainBundle\\Controller\\DefaultController::indexAction',  '_route' => 'ever_fail_main_homepage',);
+        }
+
+        // ever_fail_main_homepage2
+        if ($pathinfo === '/index.html') {
+            return array (  '_controller' => 'EverFail\\MainBundle\\Controller\\DefaultController::indexAction',  '_route' => 'ever_fail_main_homepage2',);
         }
 
         if (0 === strpos($pathinfo, '/c')) {

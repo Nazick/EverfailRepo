@@ -1,5 +1,8 @@
 ever_fail_main_homepage:
-    pattern:  /hello/{name}
+    pattern:  /
+    defaults: { _controller: EverFailMainBundle:Default:index }
+ever_fail_main_homepage2:
+    pattern:  /index.html
     defaults: { _controller: EverFailMainBundle:Default:index }
 EverFailMainBundle_category:
         resource: "@EverFailMainBundle/Resources/config/routing/category.yml"
