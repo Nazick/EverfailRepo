@@ -80,4 +80,14 @@ class Customer
     {
         return $this->id;
     }
+	
+    /**
+     * String representation of Customer
+     *
+     * @return string
+     */
+	public function __toString()
+	{
+		return $this->custName;
+	}
 }
