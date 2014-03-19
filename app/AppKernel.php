@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new EverFail\MainBundle\EverFailMainBundle(),
             
             new \FOS\UserBundle\FOSUserBundle(),
+            new EverFail\UserAuthBundle\EverFailUserAuthBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
