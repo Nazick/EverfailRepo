@@ -192,4 +192,14 @@ class Service
     {
         return $this->invoice;
     }
+	
+    /**
+     * String representation of Service
+     *
+     * @return string
+     */
+	public function __toString()
+	{
+		return "$this->serviceDate->format('Y-m-d'): $this->id";
+	}
 }

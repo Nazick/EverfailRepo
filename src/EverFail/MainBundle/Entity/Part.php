@@ -164,4 +164,14 @@ class Part
     {
         return $this->service;
     }
+	
+    /**
+     * String representation of Part
+     *
+     * @return string
+     */
+	public function __toString()
+	{
+		return "$this->partName [Rs. $this->price]";
+	}
 }

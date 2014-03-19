@@ -108,4 +108,14 @@ class Invoice
     {
         return $this->id;
     }
+	
+    /**
+     * String representation of Invoice
+     *
+     * @return string
+     */
+	public function __toString()
+	{
+		return $this->paymentDate->format('Y-m-d').": $this->id [$this->paymentStatus]";
+	}
 }
