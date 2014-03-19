@@ -28,6 +28,26 @@ framework:
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
+    globals:
+      regNumber:				"Registration Number"
+      model:						"Model"
+      manufactureYear:	"Year of Manufacture"
+      serviceDate:			"Service Date"
+      serviceCharge:		"Service Charge"
+      note:							"Note"
+      categoryName:			"Category Name"
+      description:			"Description"
+      minStock:					"Minimum Stock"
+      stock:						"Stock"
+      customerName:			"Customer Name"
+      customerEmail:		"Customer Email"
+      vendorName:				"Vendor Name"
+      vendorEmail:			"Vendor Email"
+      paymentDate:			"Payment Date"
+      paymentStatus:		"Payment Status"
+      paymentMethod:		"Payment Method"
+      partName:					"Part Name"
+      price:						"Price"
 
 # Assetic Configuration
 assetic:

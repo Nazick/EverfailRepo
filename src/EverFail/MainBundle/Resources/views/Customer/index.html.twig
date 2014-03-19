@@ -6,9 +6,8 @@
     <table class="records_list">
         <thead>
             <tr>
-                <th>Custname</th>
-                <th>Email</th>
-                <th>Id</th>
+                <th>{{ customerName }}</th>
+                <th>{{ customerEmail }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,7 +16,6 @@
             <tr>
                 <td><a href="{{ path('customer_show', { 'id': entity.id }) }}">{{ entity.custName }}</a></td>
                 <td>{{ entity.email }}</td>
-                <td>{{ entity.id }}</td>
                 <td>
                 <ul>
                     <li>

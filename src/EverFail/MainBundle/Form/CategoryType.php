@@ -15,10 +15,10 @@ class CategoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('categoryName')
-            ->add('description')
-            ->add('minStock')
-            ->add('stock')
+            ->add('categoryName', null, array('label' => 'Name'))
+            ->add('description', null, array('label' => 'Description'))
+            ->add('minStock', null, array('label' => 'Minimum Stock'))
+            ->add('stock', null, array('label' => 'Available Stock'))
         ;
     }
     

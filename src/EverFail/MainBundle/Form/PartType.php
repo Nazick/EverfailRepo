@@ -15,11 +15,11 @@ class PartType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('partName')
-            ->add('price')
-            ->add('vendor')
-            ->add('category')
-            ->add('service')
+            ->add('partName', null, array('label' => 'Name'))
+            ->add('price', null, array('label' => 'Price'))
+            ->add('vendor', null, array('label' => 'Vendor'))
+            ->add('category', null, array('label' => 'Category'))
+            ->add('service', null, array('label' => 'Used in Service'))
         ;
     }
     
