@@ -136,4 +136,14 @@ class Category
     {
         return $this->id;
     }
+	
+    /**
+     * String representation of Category
+     *
+     * @return string
+     */
+	public function __toString()
+	{
+		return "$this->categoryName [$this->stock available]";
+	}
 }

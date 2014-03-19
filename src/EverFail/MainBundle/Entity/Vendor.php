@@ -80,4 +80,14 @@ class Vendor
     {
         return $this->id;
     }
+	
+    /**
+     * String representation of Vendor
+     *
+     * @return string
+     */
+	public function __toString()
+	{
+		return $this->vendorName;
+	}
 }

@@ -108,4 +108,14 @@ class Car
     {
         return $this->id;
     }
+	
+    /**
+     * String representation of Car
+     *
+     * @return string
+     */
+	public function __toString()
+	{
+		return "$this->model [$this->regNumber]";
+	}
 }
