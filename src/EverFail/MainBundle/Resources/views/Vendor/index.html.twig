@@ -6,9 +6,8 @@
     <table class="records_list">
         <thead>
             <tr>
-                <th>Vendorname</th>
-                <th>Email</th>
-                <th>Id</th>
+                <th>{{ vendorName }}</th>
+                <th>{{ vendorEmail }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,7 +16,6 @@
             <tr>
                 <td><a href="{{ path('vendor_show', { 'id': entity.id }) }}">{{ entity.vendorName }}</a></td>
                 <td>{{ entity.email }}</td>
-                <td>{{ entity.id }}</td>
                 <td>
                 <ul>
                     <li>

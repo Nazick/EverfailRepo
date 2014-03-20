@@ -15,9 +15,9 @@ class CarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('regNumber')
-            ->add('model')
-            ->add('manufactureYear')
+            ->add('regNumber', null, array('label' => 'Registration Number'))
+            ->add('model', null, array('label' => 'Model'))
+            ->add('manufactureYear', null, array('label' => 'Year of Manufacture'))
         ;
     }
     

@@ -6,11 +6,10 @@
     <table class="records_list">
         <thead>
             <tr>
-                <th>Categoryname</th>
-                <th>Description</th>
-                <th>Minstock</th>
-                <th>Stock</th>
-                <th>Id</th>
+                <th>{{ categoryName }}</th>
+                <th>{{ description }}</th>
+                <th>{{ minStock }}</th>
+                <th>{{ stock }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -21,7 +20,6 @@
                 <td>{{ entity.description }}</td>
                 <td>{{ entity.minStock }}</td>
                 <td>{{ entity.stock }}</td>
-                <td>{{ entity.id }}</td>
                 <td>
                 <ul>
                     <li>

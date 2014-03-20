@@ -6,20 +6,16 @@
     <table class="record_properties">
         <tbody>
             <tr>
-                <th>Regnumber</th>
+                <th>{{ regNumber }}</th>
                 <td>{{ entity.regNumber }}</td>
             </tr>
             <tr>
-                <th>Model</th>
+                <th>{{ model }}</th>
                 <td>{{ entity.model }}</td>
             </tr>
             <tr>
-                <th>Manufactureyear</th>
-                <td>{{ entity.manufactureYear|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
+                <th>{{ manufactureYear }}</th>
+                <td>{{ entity.manufactureYear|date('Y-m-d') }}</td>
             </tr>
         </tbody>
     </table>

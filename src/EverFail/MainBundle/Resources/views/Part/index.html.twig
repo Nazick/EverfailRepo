@@ -6,9 +6,8 @@
     <table class="records_list">
         <thead>
             <tr>
-                <th>Partname</th>
-                <th>Price</th>
-                <th>Id</th>
+                <th>{{ partName }}</th>
+                <th>{{ price }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -17,7 +16,6 @@
             <tr>
                 <td><a href="{{ path('part_show', { 'id': entity.id }) }}">{{ entity.partName }}</a></td>
                 <td>{{ entity.price }}</td>
-                <td>{{ entity.id }}</td>
                 <td>
                 <ul>
                     <li>

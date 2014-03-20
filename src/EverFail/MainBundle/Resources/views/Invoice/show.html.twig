@@ -6,20 +6,16 @@
     <table class="record_properties">
         <tbody>
             <tr>
-                <th>Paymentdate</th>
+                <th>{{ paymentDate }}</th>
                 <td>{{ entity.paymentDate|date('Y-m-d H:i:s') }}</td>
             </tr>
             <tr>
-                <th>Paymentstatus</th>
+                <th>{{ paymentStatus }}</th>
                 <td>{{ entity.paymentStatus }}</td>
             </tr>
             <tr>
-                <th>Paymentmethod</th>
+                <th>{{ paymentMethod }}</th>
                 <td>{{ entity.paymentMethod }}</td>
-            </tr>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
             </tr>
         </tbody>
     </table>

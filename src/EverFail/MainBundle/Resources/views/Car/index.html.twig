@@ -6,10 +6,9 @@
     <table class="records_list">
         <thead>
             <tr>
-                <th>Regnumber</th>
-                <th>Model</th>
-                <th>Manufactureyear</th>
-                <th>Id</th>
+                <th>{{ regNumber }}</th>
+                <th>{{ model }}</th>
+                <th>{{ manufactureYear }}</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -18,8 +17,7 @@
             <tr>
                 <td><a href="{{ path('car_show', { 'id': entity.id }) }}">{{ entity.regNumber }}</a></td>
                 <td>{{ entity.model }}</td>
-                <td>{% if entity.manufactureYear %}{{ entity.manufactureYear|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.id }}</td>
+                <td>{% if entity.manufactureYear %}{{ entity.manufactureYear|date('Y-m-d') }}{% endif %}</td>
                 <td>
                 <ul>
                     <li>

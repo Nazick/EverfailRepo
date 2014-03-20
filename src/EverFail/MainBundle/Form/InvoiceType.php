@@ -15,9 +15,9 @@ class InvoiceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('paymentDate')
-            ->add('paymentStatus')
-            ->add('paymentMethod')
+            ->add('paymentDate', null, array('label' => 'Date'))
+            ->add('paymentMethod', null, array('label' => 'Method'))
+            ->add('paymentStatus', null, array('label' => 'Status'))
         ;
     }
     
