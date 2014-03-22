@@ -1,11 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+
+<div class="form-signin">
     <h1>Service creation</h1>
-
+    <br/>
     {{ form(form) }}
+</div>
 
-        <ul class="record_actions">
+<ul class="record_actions">
     <li>
         <a href="{{ path('service') }}">
             Back to the list

@@ -18,7 +18,7 @@ class ServiceType extends AbstractType
             ->add('serviceDate', null, array('label' => 'Date'))
             ->add('serviceCharge', null, array('label' => 'Charge (Rs.)'))
             ->add('note', null, array('label' => 'Note'))
-            ->add('car', null, array('label' => 'Car'))
+            ->add('car',null, array('label' => 'Car'))
             ->add('cust', null, array('label' => 'Customer'))
             ->add('invoice', null, array('label' => 'Invoice'))
         ;

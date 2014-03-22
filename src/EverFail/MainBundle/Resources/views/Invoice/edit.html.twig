@@ -1,11 +1,13 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
+<div class="form-signin">
     <h1>Invoice edit</h1>
-
+    <br/>
     {{ form(edit_form) }}
+</div>
 
-        <ul class="record_actions">
+<ul class="record_actions">
     <li>
         <a href="{{ path('invoice') }}">
             Back to the list

@@ -1,9 +1,15 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Part list</h1>
+    <h1>Part List</h1>
+    <ul>
+            <a href="{{ path('part_new') }}">
+                <h3>Add a new Part</h3>
+            </a>
+    </ul>
+    <br/>
 
-    <table class="records_list">
+    <table class="table">
         <thead>
             <tr>
                 <th>{{ partName }}</th>
@@ -31,11 +37,4 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('part_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
     {% endblock %}

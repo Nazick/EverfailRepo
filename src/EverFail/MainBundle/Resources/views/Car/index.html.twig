@@ -1,9 +1,14 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h2>Register new car</h2>
-
-    <table class="records_list">
+    <h1>Car List</h1>
+    <ul>
+            <a href="{{ path('car_new') }}">
+                <h3>Add a new Car</h3>
+            </a>
+    </ul>
+    <br/>
+    <table class="table">
         <thead>
             <tr>
                 <th>{{ regNumber }}</th>
@@ -33,11 +38,5 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('car_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
+        
     {% endblock %}

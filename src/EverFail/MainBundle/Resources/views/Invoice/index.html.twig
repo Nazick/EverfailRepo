@@ -1,9 +1,15 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Invoice list</h1>
+    <h1>Invoice List</h1>
+    <ul>
+            <a href="{{ path('invoice_new') }}">
+                <h3>Create an Invoice</h3>
+            </a>
+    </ul>
+    <br/>
 
-    <table class="records_list">
+    <table class="table">
         <thead>
             <tr>
                 <th>{{ paymentDate }}</th>
@@ -33,11 +39,4 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('invoice_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
     {% endblock %}

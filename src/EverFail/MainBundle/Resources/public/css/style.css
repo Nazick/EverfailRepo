@@ -118,8 +118,8 @@ img {
 }
 #adbox h1, #adbox h2 {
 	color: #2c2c2c;
-	font-size: 60px;
-	line-height: 60px;
+	font-size: 20px;
+	line-height: 20px;
 	margin: 0;
 	text-transform: uppercase;
 }
@@ -154,7 +154,7 @@ img {
 }
 h1 {
 	color: #3e3e3e;
-	font-size: 30px;
+	font-size: 10px;
 	font-weight: normal;
 	line-height: 30px;
 	margin: 0 0 30px;
@@ -362,6 +362,7 @@ p a {
 	background-color: #eee;
 	border-top: 1px solid #d8d8d8;
 	padding: 30px 0;
+        clear:both;
 }
 #footer p {
 	font-size: 12px;

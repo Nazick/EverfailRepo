@@ -10,53 +10,80 @@
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
         <link rel="stylesheet" href="/EverfailRepo/web/bundles/everfailmain/css/style.css" type="text/css">
-    </head>
-    <body>
-        <div id="header">
-            <div>
-                <div class="logo">
-                    <a href="index.html">Ever Fail</a>
-                </div>
-                <ul id="navigation">
-                    <li class="active">
-                        <a href="index.html">Home</a>
-                    </li>
-                    <li>
-                        <a href="features.html">Features</a>
-                    </li>
-                    <li>
-                        <a href="news.html">News</a>
-                    </li>
-                    <li>
-                        <a href="about.html">About</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div id="adbox">
-            <div class="clearfix">
-                <!--<img src="/EverfailRepo/web/bundles/everfailmain/images/box.png" alt="Img" height="342" width="368">-->
-                <div>
-                    <h1>Ever Fail</h1>
-                    <h2>That's what we live for.</h2>
-                    {% block body %}{% endblock %}
-                    {% block javascripts %}{% endblock %}
-                </div>
+        <link rel="stylesheet" href="{{asset('bundles/everFailMain/css/bootstrap.css')}}" type="text/css">
+        <link rel="stylesheet" href="{{asset('bundles/everFailMain/css/bootstrap-responsive.css')}}" type="text/css">
+        <style type="text/css">
+                body {
+                    padding-top: 40px;
+                    padding-bottom: 40px;
+                    background-color: #f5f5f5;
+                }
 
-            </div>
-        </div>
-         <div id="footer">
-            <div class="clearfix">
-                <div id="connect">
-                    <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a><a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a><a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a><a href="http://www.freewebsitetemplates.com/misc/contact/" target="_blank" class="tumbler"></a>
+                .form-signin {
+                    max-width: 300px;
+                    padding: 19px 29px 29px;
+                    margin: 0 auto 20px;
+                    background-color: #fff;
+                    border: 1px solid #e5e5e5;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    border-radius: 5px;
+                    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                }
+                .form-signin .form-signin-heading,
+                .form-signin .h1,
+                .form-signin .checkbox {
+                    margin-bottom: 10px;
+                }
+                .form-signin input[type="text"],
+                .form-signin input[type="password"]
+                .form-signin input{
+                    font-size: 16px;
+                    height: auto;
+                    margin-bottom: 15px;
+                    padding: 7px 9px;
+                }
+
+            </style>
+        </head>
+        <body>
+            <div id="header">
+                <div>
+                    <div class="logo">
+                        <a href="index.html">Ever Fail</a>
+                    </div>
+                    <ul id="navigation">
+                        <li class="active">
+                            <a href="{{path('ever_fail_main_homepage')}}">Home</a>
+                        </li>
+
+                    </ul>
                 </div>
-                <p>
-                    © PentoZide software solutions. All Rights Reserved.
-                </p>
             </div>
-        </div>
-    </body>
-</html>
+
+            <div id="adbox">
+                <div class="clearfix">
+                    <!--<img src="/EverfailRepo/web/bundles/everfailmain/images/box.png" alt="Img" height="342" width="368">-->
+                    <div>
+                    {% block body %}
+                            
+                    {% endblock %}
+                    {% block javascripts %}{% endblock %}
+                        </div>
+
+                    </div>
+                </div>
+                <div id="footer">
+                    <div class="clearfix">
+                        <div id="connect">
+                            <a href="http://freewebsitetemplates.com/go/facebook/" target="_blank" class="facebook"></a><a href="http://freewebsitetemplates.com/go/googleplus/" target="_blank" class="googleplus"></a><a href="http://freewebsitetemplates.com/go/twitter/" target="_blank" class="twitter"></a><a href="http://www.freewebsitetemplates.com/misc/contact/" target="_blank" class="tumbler"></a>
+                        </div>
+                        <p>
+                            © PentoZide software solutions. All Rights Reserved.
+                        </p>
+                    </div>
+                </div>
+            </body>
+        </html>

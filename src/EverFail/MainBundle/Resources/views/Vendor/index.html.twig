@@ -1,9 +1,15 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Vendor list</h1>
+    <h1>Vendor List</h1>
+    <ul>
+            <a href="{{ path('vendor_new') }}">
+                <h3>Add a new Vendor</h3>
+            </a>
+    </ul>
+    <br/>
 
-    <table class="records_list">
+    <table class="table">
         <thead>
             <tr>
                 <th>{{ vendorName }}</th>
@@ -30,12 +36,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('vendor_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
     {% endblock %}
