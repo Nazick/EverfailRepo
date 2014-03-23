@@ -17,6 +17,10 @@ class CarType extends AbstractType
         $builder
             ->add('regNumber', 'text', array('label' => 'Registration Number',
                 'attr' =>array('placeholder'=>'AB-1234')))
+            ->add('search','search',array(
+                'class'=>'EverFailMainBundle:Car',
+                'property'=>'regNumber'
+            ))
             ->add('model', 'text', array('label' => 'Model',
                 'attr' =>array('placeholder'=>'Eg : Toyota')))
             ->add('manufactureYear', 'date', array('label' => 'Year of Manufacture',
