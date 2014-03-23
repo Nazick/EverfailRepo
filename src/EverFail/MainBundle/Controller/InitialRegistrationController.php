@@ -7,7 +7,8 @@
 namespace EverFail\MainBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use 
+use EverFail\MainBundle\Form\CarRegistrationType;
+use Symfony\Component\HttpFoundation\Request;
 
 class InitialRegistrationController extends Controller
 {
@@ -16,20 +17,22 @@ class InitialRegistrationController extends Controller
         return $this->render('EverFailMainBundle:Default:index.html.twig');
     }
     
-    public function registerCarAction(){
-        $em = $this->getDoctrine()->getEntityManager();
-        $form = $this->createForm(new searchType());
+    public function registerCarAction(Request $request){
+        $form = $this->createForm(new CarRegistrationType());
         $form->handleRequest($request);
-        $id = $request->get('id');
         if ($form->isValid()) {
             $data = $form->getData();
-            $name = $data['firstname'];
+            $regNumber=$data->getRegNumber();
+            $this->get('logger')->info(gettype($regNumber));
             $em =$this->getDoctrine()->getEntityManager();
-            $repository =$em->getRepository('VolunteerManagementSystemRegistrationBundle:User');
-            $result = $repository->findBy(array('firstname'=>$name));
-            return $this->render('VolunteerManagementSystemPagesBundle:Result:result.html.twig', array('form' => $form->createView(),'result' => $result,'id'=>$id));
+            $repository =$em->getRepository('EverFailMainBundle:Car');
+            $result = $repository->findBy(array('regNumber'=>$regNumber));
+            if($result != null)
+                return $this->render('EverFailMainBundle:initialRegistration:resultsCar.html.twig', array('form' => $form->createView(),'result' => $result));
+            else
+                return $this->render('EverFailMainBundle:Default:index.html.twig');
         }
-        return $this->render('EverFailMainBundle:Default:index.html.twig');
+        return $this->render('EverFailMainBundle:initialRegistration:carRegistration.html.twig', array('form' => $form->createView()));
     }
 }
 ?>

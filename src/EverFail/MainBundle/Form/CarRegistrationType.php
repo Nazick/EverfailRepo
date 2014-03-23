@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CarType extends AbstractType
+class CarRegistrationType extends AbstractType
 {
         /**
      * @param FormBuilderInterface $builder
@@ -15,14 +15,26 @@ class CarType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('regNumber', 'text', array('label' => 'Registration Number',
-                'attr' =>array('placeholder'=>'AB-1234')))
+            ->add('regNumber', 'text', array( 
+            'label'  => 'Car Registration Number',    
+            'attr'   =>  array(
+                'placeholder' => "enter the registration number of your vehicle",
+                'newline' => 'true',
+                'widget' => 'text',
             
-            ->add('model', 'text', array('label' => 'Model',
-                'attr' =>array('placeholder'=>'Eg : Toyota')))
-            ->add('manufactureYear', 'date', array('label' => 'Year of Manufacture',
-                'widget'=>'single_text'))
-        ;
+            )));
+                      
+            
+            
+           $builder
+                
+            ->add('submit','submit', array(
+                'label' => 'View',
+                'attr' => array(
+                    'class' => 'button'
+                )
+                
+            ));
     }
     
     /**
@@ -43,3 +55,5 @@ class CarType extends AbstractType
         return 'everfail_mainbundle_car';
     }
 }
+
+?>

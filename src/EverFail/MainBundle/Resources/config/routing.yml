@@ -25,3 +25,7 @@ EverFailMainBundle_service:
 EverFailMainBundle_vendor:
         resource: "@EverFailMainBundle/Resources/config/routing/vendor.yml"
         prefix:   /vendor
+       
+Search_Car:
+        pattern:  /carSearch
+        defaults: { _controller: "EverFailMainBundle:InitialRegistration:registerCar" }
