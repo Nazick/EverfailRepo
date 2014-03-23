@@ -30,7 +30,7 @@ class InitialRegistrationController extends Controller
             if($result != null)
                 return $this->render('EverFailMainBundle:initialRegistration:resultsCar.html.twig', array('form' => $form->createView(),'result' => $result));
             else
-                return $this->render('EverFailMainBundle:Default:index.html.twig');
+                return $this->render('EverFailMainBundle:initialRegistration:noResultCar.html.twig',array('form' => $form->createView()));
         }
         return $this->render('EverFailMainBundle:initialRegistration:carRegistration.html.twig', array('form' => $form->createView()));
     }

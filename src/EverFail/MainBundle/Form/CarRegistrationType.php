@@ -29,7 +29,7 @@ class CarRegistrationType extends AbstractType
            $builder
                 
             ->add('submit','submit', array(
-                'label' => 'View',
+                'label' => 'Search',
                 'attr' => array(
                     'class' => 'button'
                 )
