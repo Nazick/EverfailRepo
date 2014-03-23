@@ -1,0 +1,17 @@
+
+{%extends "::base.html.twig"%}
+
+{%block body%}
+<div class="sign-in">
+    {{form(form)}}
+</div>
+<table width=90%>
+        <h1>Search Reults</h1>
+    {% for res in result %}
+        <tr><td>
+        <strong>{{ res.getRegNumber()}}</strong><br></td><td>
+        {{ res.getModel() }}</td><td>
+        {{ res.getManufactureYear()|date('Y-m-d')}}</td></tr>
+{% endfor %}  </table>
+{%endblock%}
+
