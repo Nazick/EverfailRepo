@@ -1,0 +1,10 @@
+{%extends "::base.html.twig"%}
+
+{%block body%}
+<div class="sign-in">
+    {{form(form)}}
+</div>
+<h3>You are not registered in our service</h3>
+<h3><a href={{path('customer_new')}}>Register Here</a></h3>
+{%endblock%}
+

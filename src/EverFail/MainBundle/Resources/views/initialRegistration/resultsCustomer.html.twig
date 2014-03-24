@@ -1,0 +1,14 @@
+{%extends "::base.html.twig"%}
+
+{%block body%}
+<div class="sign-in">
+    {{form(form)}}
+</div>
+<table class='table' width=90%>
+        <h1>Search Reults</h1><br/>
+    {% for res in result %}
+        <tr><td>
+        <strong>{{ res.getCustName()}}</strong><br></td><td>
+        {{ res.getEmail() }}</td><td>>
+{% endfor %}  </table>
+{%endblock%}
