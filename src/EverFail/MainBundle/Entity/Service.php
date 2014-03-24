@@ -200,6 +200,6 @@ class Service
      */
 	public function __toString()
 	{
-		return "$this->serviceDate->format('Y-m-d'): $this->id";
+		return $this->serviceDate->format('Y-m-d').": $this->id";
 	}
 }
