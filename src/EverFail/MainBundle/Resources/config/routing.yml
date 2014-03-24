@@ -29,3 +29,7 @@ EverFailMainBundle_vendor:
 Search_Car:
         pattern:  /carSearch
         defaults: { _controller: "EverFailMainBundle:InitialRegistration:registerCar" }
+        
+Search_Customer:
+        pattern:  /customerSearch
+        defaults: { _controller: "EverFailMainBundle:InitialRegistration:registerCustomer" }
