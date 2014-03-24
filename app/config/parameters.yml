@@ -7,9 +7,9 @@ parameters:
     database_name2: UserACL
     database_user: root
     database_password: null
-    mailer_transport: smtp
+    mailer_transport: gmail
     mailer_host: 127.0.0.1
-    mailer_user: null
-    mailer_password: null
+    mailer_user: everfailservices
+    mailer_password: pentozide
     locale: en
-    secret: ThisTokenIsNotSoSecretChangeIt
+    secret: everfail@pentozide
