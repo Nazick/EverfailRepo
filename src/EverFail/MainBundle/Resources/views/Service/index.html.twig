@@ -5,30 +5,34 @@
     
     <br/>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>{{ serviceDate }}</th>
-                <th>{{ serviceCharge }}</th>
-                <th>{{ note }}</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<table class="table">
+	<thead>
+		<tr>
+			<th>{{ serviceDate }}</th>
+			<th>{{ serviceCharge }}</th>
+			<th>{{ note }}</th>
+                        <th>{{ car}}</th>
+                        <th>{{customer}}</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('service_show', { 'id': entity.id }) }}">{{ entity.serviceDate|date('Y-m-d') }}</a></td>
                 <td>{{ entity.serviceCharge }}</td>
                 <td>{{ entity.note }}</td>
+                <td>{{ entity.car }}</td>
+                <td>{{ entity.cust }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('service_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('service_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+					<ul>
+						<li>
+							<a href="{{ path('service_show', { 'id': entity.id }) }}">show</a>
+						</li>
+						<li>
+							<a href="{{ path('service_edit', { 'id': entity.id }) }}">edit</a>
+						</li>
+					</ul>
                 </td>
             </tr>
         {% endfor %}

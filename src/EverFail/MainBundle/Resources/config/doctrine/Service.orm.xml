@@ -6,14 +6,11 @@
       <index name="Cust_ID_fk" columns="Cust_ID"/>
       <index name="Invoice_ID_idx" columns="Invoice_ID"/>
     </indexes>
-    <unique-constraints>
-      <unique-constraint name="ID_UNIQUE" columns="ID"/>
-    </unique-constraints>
     <id name="id" type="integer" column="ID">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="serviceDate" type="date" column="Service_Date" nullable="false"/>
-    <field name="serviceCharge" type="decimal" column="Service_Charge" precision="10" scale="2" nullable="true"/>
+    <field name="serviceCharge" type="decimal" column="Service_Charge" precision="10" scale="2" nullable="false"/>
     <field name="note" type="string" column="Note" length="45" nullable="true"/>
     <many-to-one field="invoice" target-entity="Invoice">
       <join-columns>

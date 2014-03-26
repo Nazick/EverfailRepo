@@ -4,8 +4,8 @@
     <id name="id" type="integer" column="ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="categoryName" type="string" column="Category_Name" length="30" nullable="true"/>
+    <field name="categoryName" type="string" column="Category_Name" length="30" nullable="false"/>
     <field name="description" type="string" column="Description" length="45" nullable="true"/>
-    <field name="minStock" type="integer" column="Min_Stock" nullable="true"/>
+    <field name="minStock" type="integer" column="Min_Stock" nullable="false"/>
   </entity>
 </doctrine-mapping>

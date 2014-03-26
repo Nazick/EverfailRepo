@@ -9,8 +9,9 @@
     <id name="id" type="integer" column="ID">
       <generator strategy="IDENTITY"/>
     </id>
-    <field name="partName" type="string" column="Part_Name" length="45" nullable="true"/>
     <field name="price" type="decimal" column="Price" precision="10" scale="2" nullable="false"/>
+    <field name="purchasedDate" type="date" column="Purchased_Date" nullable="true"/>
+    <field name="vendorWarranty" type="integer" column="Vendor_Warranty" nullable="true"/>
     <many-to-one field="vendor" target-entity="Vendor">
       <join-columns>
         <join-column name="Vendor_ID" referenced-column-name="ID"/>

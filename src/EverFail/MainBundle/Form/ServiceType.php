@@ -14,18 +14,11 @@ class ServiceType extends AbstractType {
 	 * @param array $options
 	 */
 	public function buildForm(FormBuilderInterface $builder, array $options) {
-//		$em = $this->getDoctrine()->getManager();
-//		$qb = $em->getRepository('EverFailMainBundle:Category')->createQueryBuilder('n');
-//		$result = $qb->where('n.stock > 0')->getQuery()->getResult();
-//
-//		//add category list
-//		$con = Doctrine::getInstance()->connection();
-//		$st = $con->execute("SELECT name FROM Category where Stock > 0");
-//		$result = $st->fetchAll();
-
 		$builder
-				->add('serviceDate', null, array('label' => 'Date'))
-				->add('serviceCharge', null, array('label' => 'Charge (Rs.)'))
+				->add('serviceDate', 'date', array('label' => 'Date',
+					'widget' => 'single_text'))
+				->add('serviceCharge', null, array('label' => 'Charge (Rs.)',
+					'attr' => array('pattern' => '[0-9]+(.[0-9]{2})?')))
 				->add('note', null, array('label' => 'Note'))
 				->add('car', null, array(
 					'label' => 'Car',
@@ -33,17 +26,34 @@ class ServiceType extends AbstractType {
 				->add('cust', null, array(
 					'label' => 'Customer',
 					'empty_value' => false))
-				->add('invoice', null, array('label' => 'Invoice'))
+				->add('invoice', 'entity', array(
+					'class' => 'EverFailMainBundle:Invoice',
+					'expanded' => false,
+					'label' => 'Invoice',
+					'multiple' => false,
+					'required' => false,
+					'empty_value' => '[not issued]',
+					'empty_data' => null,
+					'query_builder' => function(EntityRepository $er) {
+						return $er->createQueryBuilder('i')
+								->select('i')
+								->where('i.id NOT IN (SELECT IDENTITY(s.invoice)
+									FROM EverFailMainBundle:Service s
+									WHERE s.invoice IS NOT NULL)');
+					}
+				))
 				->add('category', 'entity', array(
 					'class' => 'EverFailMainBundle:Category',
-					'expanded' => true,
+					'expanded' => false,
 					'label' => 'Parts Used',
 					'multiple' => true,
 					'mapped' => false,
 					'query_builder' => function(EntityRepository $er) {
 						return $er->createQueryBuilder('u')
-								->where('u.stock > 0');
-					},));
+								->where('EXISTS (SELECT p FROM EverFailMainBundle:Part p
+									WHERE p.category = u AND p.service IS NULL)');
+					}
+		));
 	}
 
 	/**
@@ -59,7 +69,7 @@ class ServiceType extends AbstractType {
 	 * @return string
 	 */
 	public function getName() {
-		return 'everfail_mainbundle_service';
+		return 'everfail_mainbundle_new_service';
 	}
 
 }

@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
   <entity name="EverFail\MainBundle\Entity\Invoice" table="invoice">
-    <unique-constraints>
-      <unique-constraint name="ID_UNIQUE" columns="ID"/>
-    </unique-constraints>
     <id name="id" type="integer" column="ID">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="paymentDate" type="date" column="Payment_Date" nullable="true"/>
-    <field name="paymentStatus" type="string" column="Payment_Status" length="10" nullable="true"/>
-    <field name="paymentMethod" type="string" column="Payment_Method" length="15" nullable="true"/>
+    <field name="paymentStatus" type="string" column="Payment_Status" length="6" nullable="false"/>
+    <field name="paymentMethod" type="string" column="Payment_Method" length="12" nullable="false"/>
   </entity>
 </doctrine-mapping>

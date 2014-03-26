@@ -32,13 +32,13 @@ twig:
       regNumber:				"Registration Number"
       model:						"Model"
       manufactureYear:	"Year of Manufacture"
+      mileage:					"Mileage"
       serviceDate:			"Service Date"
       serviceCharge:		"Service Charge"
       note:							"Note"
       categoryName:			"Category Name"
       description:			"Description"
       minStock:					"Minimum Stock"
-      stock:						"Stock"
       customerName:			"Customer Name"
       customerEmail:		"Customer Email"
       vendorName:				"Vendor Name"
@@ -46,9 +46,11 @@ twig:
       paymentDate:			"Payment Date"
       paymentStatus:		"Payment Status"
       paymentMethod:		"Payment Method"
-      partName:					"Part Name"
       price:						"Price"
-
+      purchasedDate:		"Date of Purchase"
+      vendorWarranty:		"Vendor's Warranty (months)"
+      car:              "Car"
+      customer:         "Customer"
 # Assetic Configuration
 assetic:
     debug:          "%kernel.debug%"

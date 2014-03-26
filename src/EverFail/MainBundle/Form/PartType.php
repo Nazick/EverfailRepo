@@ -21,13 +21,14 @@ class PartType extends AbstractType {
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-
         $builder
-                ->add('partName', null, array('label' => 'Name',
-                    'required' => 'true'))
-                ->add('price', 'text', array('label' => 'Price',
-                    'pattern' => '[0-9]+(.[0-9]{2})?',
-                    'attr' => array('placeholder' => '000.00')))
+                ->add('price', null, array('label' => 'Price (Rs.)',
+                    'attr' => array('pattern' => '[0-9]+(.[0-9]{2})?')))
+                ->add('purchasedDate', 'date', array('label' => 'Date of Purchase',
+                    'widget' => 'single_text'))
+                ->add('vendorWarranty', 'integer', array(
+                    'label' => 'Vendor\'s Warranty (months)',
+                    'attr' => array('min' => 0)))
                 ->add('vendor', 'entity', array('label' => 'Vendor',
                     'class' => 'EverFailMainBundle:Vendor',
                     'read_only' => true,
@@ -36,9 +37,9 @@ class PartType extends AbstractType {
                     'class' => 'EverFailMainBundle:Category',
                     'read_only' => true,
                     'data' => $this->category))
-                ->add('service', null, array('label' => 'Used in Service'))
                 ->add('amount', 'integer', array('label' => 'Amount',
-                    'mapped' => false))
+                    'mapped' => false,
+                    'attr'=>array('min'=>0)))
         ;
     }
 
@@ -59,3 +60,4 @@ class PartType extends AbstractType {
     }
 
 }
+
