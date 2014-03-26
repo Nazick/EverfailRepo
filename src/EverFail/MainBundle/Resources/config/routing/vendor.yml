@@ -28,3 +28,7 @@ vendor_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "EverFailMainBundle:Vendor:delete" }
     requirements: { _method: post|delete }
+
+wizard_vendor_show:
+        pattern: /{id}/vendorShow
+        defaults: { _controller: "EverFailMainBundle:PartsPurchase:showVendor" }

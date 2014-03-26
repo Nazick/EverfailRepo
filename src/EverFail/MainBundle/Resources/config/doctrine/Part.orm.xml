@@ -16,14 +16,14 @@
         <join-column name="Vendor_ID" referenced-column-name="ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="category" target-entity="Category">
-      <join-columns>
-        <join-column name="Category_ID" referenced-column-name="ID"/>
-      </join-columns>
-    </many-to-one>
     <many-to-one field="service" target-entity="Service">
       <join-columns>
         <join-column name="Service_ID" referenced-column-name="ID"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="category" target-entity="Category">
+      <join-columns>
+        <join-column name="Category_ID" referenced-column-name="ID"/>
       </join-columns>
     </many-to-one>
   </entity>

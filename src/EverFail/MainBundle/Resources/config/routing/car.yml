@@ -7,11 +7,11 @@ car_show:
     defaults: { _controller: "EverFailMainBundle:Car:show" }
 
 car_new:
-    pattern:  /new
+    pattern:  /{CustId}/new
     defaults: { _controller: "EverFailMainBundle:Car:new" }
 
 car_create:
-    pattern:  /create
+    pattern:  /{CustId}/create
     defaults: { _controller: "EverFailMainBundle:Car:create" }
     requirements: { _method: post }
 
@@ -28,3 +28,7 @@ car_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "EverFailMainBundle:Car:delete" }
     requirements: { _method: post|delete }
+
+wizard_car_show:
+        pattern: /{CustId}/{CarId}/carShow
+        defaults: { _controller: "EverFailMainBundle:InitialRegistration:showCar" }

@@ -23,6 +23,8 @@ class PartType extends AbstractType
             ->add('vendor', null, array('label' => 'Vendor'))
             ->add('category', null, array('label' => 'Category'))
             ->add('service', null, array('label' => 'Used in Service'))
+            ->add('amount','integer',array('label'=>'Amount',
+                'mapped'=>false))
         ;
     }
     

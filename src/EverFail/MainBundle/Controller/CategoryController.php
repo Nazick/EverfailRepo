@@ -33,18 +33,20 @@ class CategoryController extends Controller
      * Creates a new Category entity.
      *
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request,$VenId)
     {
         $entity = new Category();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity,$VenId);
         $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $vendor = $em->getRepository('EverFailMainBundle:Vendor')->findOneBy(array('id'=>$VenId));
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('category_show', array('id' => $entity->getId())));
+           return $this->redirect($this->generateUrl('wizard_category_show', array('CatId' => $entity->getId(),'VenId'=>$vendor->getId())));
         }
 
         return $this->render('EverFailMainBundle:Category:new.html.twig', array(
@@ -60,10 +62,10 @@ class CategoryController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Category $entity)
+    private function createCreateForm(Category $entity,$VenId)
     {
         $form = $this->createForm(new CategoryType(), $entity, array(
-            'action' => $this->generateUrl('category_create'),
+            'action' => $this->generateUrl('category_create',array('VenId' => $VenId)),
             'method' => 'POST',
         ));
 
@@ -76,10 +78,10 @@ class CategoryController extends Controller
      * Displays a form to create a new Category entity.
      *
      */
-    public function newAction()
+    public function newAction($VenId)
     {
         $entity = new Category();
-        $form   = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity,$VenId);
 
         return $this->render('EverFailMainBundle:Category:new.html.twig', array(
             'entity' => $entity,

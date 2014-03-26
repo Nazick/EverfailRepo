@@ -1,0 +1,9 @@
+{% extends '::base.html.twig' %}
+
+{%block body%}
+<form method="POST" class="sign-in" action="{{path('add_amount')}}">
+    <label>No of Parts to add</label>
+    <input name="amount" type="number"/> 
+    <button type="submit">submit</button>
+</form>
+{%endblock%}

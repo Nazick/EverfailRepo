@@ -27,7 +27,7 @@ class Category
     /**
      * @var integer
      */
-    private $stock;
+   // private $stock;
 
     /**
      * @var integer
@@ -110,22 +110,22 @@ class Category
      * @param integer $stock
      * @return Category
      */
-    public function setStock($stock)
-    {
-        $this->stock = $stock;
-
-        return $this;
-    }
+//    public function setStock($stock)
+//    {
+//        $this->stock = $stock;
+//
+//        return $this;
+//    }
 
     /**
      * Get stock
      *
      * @return integer 
      */
-    public function getStock()
-    {
-        return $this->stock;
-    }
+//    public function getStock()
+//    {
+//        return $this->stock;
+//    }
 
     /**
      * Get id
@@ -144,6 +144,6 @@ class Category
      */
 	public function __toString()
 	{
-		return "$this->categoryName [$this->stock available]";
+		return "$this->categoryName";
 	}
 }

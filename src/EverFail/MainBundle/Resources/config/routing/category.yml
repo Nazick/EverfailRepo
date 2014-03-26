@@ -7,11 +7,11 @@ category_show:
     defaults: { _controller: "EverFailMainBundle:Category:show" }
 
 category_new:
-    pattern:  /new
+    pattern:  /{VenId}/new
     defaults: { _controller: "EverFailMainBundle:Category:new" }
 
 category_create:
-    pattern:  /create
+    pattern:   /{VenId}/create
     defaults: { _controller: "EverFailMainBundle:Category:create" }
     requirements: { _method: post }
 
@@ -28,3 +28,7 @@ category_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "EverFailMainBundle:Category:delete" }
     requirements: { _method: post|delete }
+
+wizard_category_show:
+        pattern: /{VenId}/{CatId}/categoryShow
+        defaults: { _controller: "EverFailMainBundle:PartsPurhase:showCategory" }
