@@ -33,18 +33,21 @@ class CarController extends Controller
      * Creates a new Car entity.
      *
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request,$CustId)
     {
         $entity = new Car();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity,$CustId);
         $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $customer = $em->getRepository('EverFailMainBundle:Customer')->findOneBy(array('id'=>$CustId));
+        $this->get('logger')->info(gettype($customer)); 
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('car_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('wizard_car_show', array('CarId' => $entity->getId(),'CustId'=>$CustId)));
         }
 
         return $this->render('EverFailMainBundle:Car:new.html.twig', array(
@@ -60,10 +63,10 @@ class CarController extends Controller
     *
     * @return \Symfony\Component\Form\Form The form
     */
-    private function createCreateForm(Car $entity)
+    private function createCreateForm(Car $entity,$CustId)
     {
         $form = $this->createForm(new CarType(), $entity, array(
-            'action' => $this->generateUrl('car_create'),
+            'action' => $this->generateUrl('car_create',array('CustId' => $CustId)),
             'method' => 'POST',
         ));
 
@@ -76,11 +79,10 @@ class CarController extends Controller
      * Displays a form to create a new Car entity.
      *
      */
-    public function newAction()
+    public function newAction($CustId)
     {
         $entity = new Car();
-        $form   = $this->createCreateForm($entity);
-
+        $form   = $this->createCreateForm($entity,$CustId);
         return $this->render('EverFailMainBundle:Car:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),

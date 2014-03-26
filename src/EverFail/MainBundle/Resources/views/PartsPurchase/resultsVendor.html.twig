@@ -1,0 +1,24 @@
+{%extends "::base.html.twig"%}
+
+{%block body%}
+<div class="sign-in">
+    {{form(form)}}
+</div>
+<br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ vendorName }}</th>
+                <th>{{ vendorEmail }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for res in result %}
+            <tr>
+                <td><a href="{{ path('wizard_vendor_show', { 'id': res.id }) }}">{{ res.vendorName }}</a></td>
+                <td>{{ res.email }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{%endblock%}

@@ -4,11 +4,21 @@
 <div class="sign-in">
     {{form(form)}}
 </div>
-<table class='table' width=90%>
-        <h1>Search Reults</h1><br/>
-    {% for res in result %}
-        <tr><td>
-        <strong>{{ res.getCustName()}}</strong><br></td><td>
-        {{ res.getEmail() }}</td><td>>
-{% endfor %}  </table>
+<br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ customerName }}</th>
+                <th>{{ customerEmail }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for res in result %}
+            <tr>
+                <td><a href="{{ path('wizard_customer_show', { 'id': res.getId() }) }}">{{ res.getCustName() }}</a></td>
+                <td>{{ res.getEmail() }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {%endblock%}

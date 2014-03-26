@@ -4,6 +4,25 @@
 <div class="sign-in">
     {{form(form)}}
 </div>
+<br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ regNumber }}</th>
+                <th>{{ model }}</th>
+                <th>{{ manufactureYear }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('wizard_car_show', { 'CarId': entity.id,'CustId': customer.getId() }) }}">{{ entity.regNumber }}</a></td>
+                <td>{{ entity.model }}</td>
+                <td>{% if entity.manufactureYear %}{{ entity.manufactureYear|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 {%endblock%}
 

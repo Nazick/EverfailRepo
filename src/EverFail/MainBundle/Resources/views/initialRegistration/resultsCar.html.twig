@@ -1,17 +1,28 @@
-
 {%extends "::base.html.twig"%}
 
 {%block body%}
 <div class="sign-in">
     {{form(form)}}
 </div>
-<table class='table' width=90%>
-        <h1>Search Reults</h1><br/>
-    {% for res in result %}
-        <tr><td>
-        <strong>{{ res.getRegNumber()}}</strong><br></td><td>
-        {{ res.getModel() }}</td><td>
-        {{ res.getManufactureYear()|date('Y-m-d')}}</td></tr>
-{% endfor %}  </table>
+<br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ regNumber }}</th>
+                <th>{{ model }}</th>
+                <th>{{ manufactureYear }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for res in car %}
+            <tr>
+                <td><a href="{{ path('wizard_car_show', { 'CarId': res.id ,'CustId': customer.getId()}) }}">{{ res.getRegNumber() }}</a></td>
+                <td>{{ res.getModel() }}</td>
+                <td>{% if res.getManufactureYear() %}{{ res.getManufactureYear()|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
 {%endblock%}
 

@@ -28,3 +28,7 @@ customer_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "EverFailMainBundle:Customer:delete" }
     requirements: { _method: post|delete }
+
+wizard_customer_show:
+        pattern: /{id}/customerShow
+        defaults: { _controller: "EverFailMainBundle:InitialRegistration:showCustomer" }

@@ -33,7 +33,7 @@ class ServiceController extends Controller {
      * Creates a new Service entity.
      *
      */
-    public function createAction(Request $request) {
+    public function createAction(Request $request,$CustId,$CarId) {
         $service = new Service();
         $form = $this->createCreateForm($service);
         $form->handleRequest($request);
@@ -112,9 +112,9 @@ class ServiceController extends Controller {
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Service $entity) {
+    private function createCreateForm(Service $entity,$CustId,$CarId) {
         $form = $this->createForm(new ServiceType(), $entity, array(
-            'action' => $this->generateUrl('service_create'),
+            'action' => $this->generateUrl('service_create',array('CustId' => $CustId,'CarId' => $CarId)),
             'method' => 'POST',
         ));
 
@@ -127,9 +127,9 @@ class ServiceController extends Controller {
      * Displays a form to create a new Service entity.
      *
      */
-    public function newAction() {
+    public function newAction($CustId,$CarId) {
         $entity = new Service();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity,$CustId,$CarId);
 
         return $this->render('EverFailMainBundle:Service:new.html.twig', array(
                     'entity' => $entity,

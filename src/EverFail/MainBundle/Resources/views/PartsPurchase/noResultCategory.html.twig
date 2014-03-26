@@ -1,0 +1,11 @@
+
+{%extends "::base.html.twig"%}
+
+{%block body%}
+<div class="sign-in">
+    {{form(form)}}
+</div>
+<h3>This category is new for our service</h3>
+<h3><a href={{path('category_new',{'VenId': vendor.getId()})}}>Register Here</a></h3>
+{%endblock%}
+
