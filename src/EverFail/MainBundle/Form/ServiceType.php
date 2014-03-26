@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class NewServiceType extends AbstractType {
+class ServiceType extends AbstractType {
 
 	/**
 	 * @param FormBuilderInterface $builder

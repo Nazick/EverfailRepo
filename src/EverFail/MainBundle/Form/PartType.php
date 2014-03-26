@@ -29,6 +29,8 @@ class PartType extends AbstractType {
 					'disabled' => true))
 				->add('category', null, array('label' => 'Category',
 					'empty_value' => false))
+				->add('amount','integer',array('label'=>'Amount',
+					'mapped'=>false))
 		;
 	}
 

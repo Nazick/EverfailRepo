@@ -1,3 +1,7 @@
+ever_fail_wizard:
+    resource: "@EverFailWizardBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ever_fail_user_auth:
     resource: "@EverFailUserAuthBundle/Resources/config/routing.yml"
     prefix:   /

@@ -6,6 +6,6 @@
     {{form(form)}}
 </div>
 <h3>This vehicle is new for our service</h3>
-<h3><a href={{path('car_new')}}>Register Here</a></h3>
+<h3><a href={{path('car_new',{'CustId': customer.getId()})}}>Register Here</a></h3>
 {%endblock%}
 

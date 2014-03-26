@@ -1,43 +1,36 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-<h1>Part list</h1>
+    <h1>Part List</h1>
+    
+    <br/>
 
-<table class="table">
-	<thead>
-		<tr>
-			<th>{{ price }}</th>
-			<th>{{ purchasedDate }}</th>
-			<th>{{ vendorWarranty }}</th>
-			<th>Actions</th>
-		</tr>
-	</thead>
-	<tbody>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ partName }}</th>
+                <th>{{ price }}</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('part_show', { 'id': entity.id }) }}">{{ entity.price }}</a></td>
-                <td>{% if entity.purchasedDate %}{{ entity.purchasedDate|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ entity.vendorWarranty }}</td>
+                <td><a href="{{ path('part_show', { 'id': entity.id }) }}">{{ entity.partName }}</a></td>
+                <td>{{ entity.price }}</td>
                 <td>
-					<ul>
-						<li>
-							<a href="{{ path('part_show', { 'id': entity.id }) }}">show</a>
-						</li>
-						<li>
-							<a href="{{ path('part_edit', { 'id': entity.id }) }}">edit</a>
-						</li>
-					</ul>
+                <ul>
+                    <li>
+                        <a href="{{ path('part_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('part_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-	<ul>
-        <li>
-            <a href="{{ path('part_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
     {% endblock %}

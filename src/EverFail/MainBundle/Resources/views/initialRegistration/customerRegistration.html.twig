@@ -4,6 +4,22 @@
 <div class="sign-in">
     {{form(form)}}
 </div>
-
+<br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ customerName }}</th>
+                <th>{{ customerEmail }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('wizard_customer_show', { 'id': entity.id }) }}">{{ entity.custName }}</a></td>
+                <td>{{ entity.email }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {%endblock%}
 

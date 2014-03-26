@@ -1,0 +1,26 @@
+{%extends "::base.html.twig"%}
+
+{%block body%}
+<div class="sign-in">
+    {{form(form)}}
+</div>
+<br/>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>{{ categoryName }}</th>
+                <th>{{ description }}</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('wizard_category_show', { 'CatId': entity.id,'VenId': vendor.getId() }) }}">{{ entity.categoryName }}</a></td>
+                <td>{{ entity.description }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{%endblock%}
+

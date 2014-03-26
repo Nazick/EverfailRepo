@@ -5,7 +5,7 @@ namespace EverFail\MainBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use EverFail\MainBundle\Entity\Service;
-use EverFail\MainBundle\Form\NewServiceType;
+use EverFail\MainBundle\Form\ServiceType;
 use EverFail\MainBundle\Form\EditServiceType;
 use Symfony\Component\Debug\Exception\DummyException;
 
@@ -29,14 +29,14 @@ class ServiceController extends Controller {
 		));
 	}
 
-	/**
-	 * Creates a new Service entity.
-	 *
-	 */
-	public function createAction(Request $request) {
-		$service = new Service();
-		$form = $this->createCreateForm($service);
-		$form->handleRequest($request);
+    /**
+     * Creates a new Service entity.
+     *
+     */
+    public function createAction(Request $request,$CustId,$CarId) {
+        $service = new Service();
+        $form = $this->createCreateForm($service);
+        $form->handleRequest($request);
 
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
@@ -104,31 +104,31 @@ class ServiceController extends Controller {
 		));
 	}
 
-	/**
-	 * Creates a form to create a Service entity.
-	 *
-	 * @param Service $entity The entity
-	 *
-	 * @return \Symfony\Component\Form\Form The form
-	 */
-	private function createCreateForm(Service $entity) {
-		$form = $this->createForm(new NewServiceType(), $entity, array(
-			'action' => $this->generateUrl('service_create'),
-			'method' => 'POST',
-		));
+    /**
+     * Creates a form to create a Service entity.
+     *
+     * @param Service $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createCreateForm(Service $entity,$CustId,$CarId) {
+        $form = $this->createForm(new ServiceType(), $entity, array(
+            'action' => $this->generateUrl('service_create',array('CustId' => $CustId,'CarId' => $CarId)),
+            'method' => 'POST',
+        ));
 
 		$form->add('submit', 'submit', array('label' => 'Create'));
 
 		return $form;
 	}
 
-	/**
-	 * Displays a form to create a new Service entity.
-	 *
-	 */
-	public function newAction() {
-		$entity = new Service();
-		$form = $this->createCreateForm($entity);
+    /**
+     * Displays a form to create a new Service entity.
+     *
+     */
+    public function newAction($CustId,$CarId) {
+        $entity = new Service();
+        $form = $this->createCreateForm($entity,$CustId,$CarId);
 
 		return $this->render('EverFailMainBundle:Service:new.html.twig', array(
 					'entity' => $entity,

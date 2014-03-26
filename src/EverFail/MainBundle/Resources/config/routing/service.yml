@@ -7,11 +7,11 @@ service_show:
     defaults: { _controller: "EverFailMainBundle:Service:show" }
 
 service_new:
-    pattern:  /new
+    pattern:  /{CustId}/{CarId}/new
     defaults: { _controller: "EverFailMainBundle:Service:new" }
 
 service_create:
-    pattern:  /create
+    pattern:  /{CustId}/{CarId}/create
     defaults: { _controller: "EverFailMainBundle:Service:create" }
     requirements: { _method: post }
 

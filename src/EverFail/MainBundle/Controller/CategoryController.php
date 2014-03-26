@@ -23,27 +23,29 @@ class CategoryController extends Controller {
 
 		$entities = $em->getRepository('EverFailMainBundle:Category')->findAll();
 
-		return $this->render('EverFailMainBundle:Category:index.html.twig', array(
-					'entities' => $entities,
-		));
-	}
-
-	/**
-	 * Creates a new Category entity.
-	 *
-	 */
-	public function createAction(Request $request) {
-		$entity = new Category();
-		$form = $this->createCreateForm($entity);
-		$form->handleRequest($request);
+        return $this->render('EverFailMainBundle:Category:index.html.twig', array(
+            'entities' => $entities,
+        ));
+    }
+    /**
+     * Creates a new Category entity.
+     *
+     */
+    public function createAction(Request $request,$VenId)
+    {
+        $entity = new Category();
+        $form = $this->createCreateForm($entity,$VenId);
+        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $vendor = $em->getRepository('EverFailMainBundle:Vendor')->findOneBy(array('id'=>$VenId));
 
 		if ($form->isValid()) {
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($entity);
 			$em->flush();
 
-			return $this->redirect($this->generateUrl('category_show', array('id' => $entity->getId())));
-		}
+			return $this->redirect($this->generateUrl('wizard_category_show', array('CatId' => $entity->getId(),'VenId'=>$vendor->getId())));
+        }
 
 		return $this->render('EverFailMainBundle:Category:new.html.twig', array(
 					'entity' => $entity,
@@ -51,18 +53,19 @@ class CategoryController extends Controller {
 		));
 	}
 
-	/**
-	 * Creates a form to create a Category entity.
-	 *
-	 * @param Category $entity The entity
-	 *
-	 * @return \Symfony\Component\Form\Form The form
-	 */
-	private function createCreateForm(Category $entity) {
-		$form = $this->createForm(new CategoryType(), $entity, array(
-			'action' => $this->generateUrl('category_create'),
-			'method' => 'POST',
-		));
+    /**
+    * Creates a form to create a Category entity.
+    *
+    * @param Category $entity The entity
+    *
+    * @return \Symfony\Component\Form\Form The form
+    */
+    private function createCreateForm(Category $entity,$VenId)
+    {
+        $form = $this->createForm(new CategoryType(), $entity, array(
+            'action' => $this->generateUrl('category_create',array('VenId' => $VenId)),
+            'method' => 'POST',
+        ));
 
 		$form->add('submit', 'submit', array('label' => 'Create'));
 
@@ -70,12 +73,13 @@ class CategoryController extends Controller {
 	}
 
 	/**
-	 * Displays a form to create a new Category entity.
-	 *
-	 */
-	public function newAction() {
-		$entity = new Category();
-		$form = $this->createCreateForm($entity);
+     * Displays a form to create a new Category entity.
+     *
+     */
+    public function newAction($VenId)
+    {
+        $entity = new Category();
+        $form   = $this->createCreateForm($entity,$VenId);
 
 		return $this->render('EverFailMainBundle:Category:new.html.twig', array(
 					'entity' => $entity,
