@@ -4,7 +4,6 @@ namespace EverFail\MainBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use EverFail\MainBundle\Entity\Invoice;
 use EverFail\MainBundle\Form\InvoiceType;
 
@@ -12,212 +11,205 @@ use EverFail\MainBundle\Form\InvoiceType;
  * Invoice controller.
  *
  */
-class InvoiceController extends Controller
-{
+class InvoiceController extends Controller {
 
-    /**
-     * Lists all Invoice entities.
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+	/**
+	 * Lists all Invoice entities.
+	 *
+	 */
+	public function indexAction() {
+		$em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('EverFailMainBundle:Invoice')->findAll();
+		$entities = $em->getRepository('EverFailMainBundle:Invoice')->findAll();
 
-        return $this->render('EverFailMainBundle:Invoice:index.html.twig', array(
-            'entities' => $entities,
-        ));
-    }
-    /**
-     * Creates a new Invoice entity.
-     *
-     */
-    public function createAction(Request $request)
-    {
-        $entity = new Invoice();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+		return $this->render('EverFailMainBundle:Invoice:index.html.twig', array(
+					'entities' => $entities,
+		));
+	}
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+	/**
+	 * Creates a new Invoice entity.
+	 *
+	 */
+	public function createAction(Request $request) {
+		$entity = new Invoice();
+		$form = $this->createCreateForm($entity);
+		$form->handleRequest($request);
 
-            return $this->redirect($this->generateUrl('invoice_show', array('id' => $entity->getId())));
-        }
+		if ($form->isValid()) {
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($entity);
+			$em->flush();
 
-        return $this->render('EverFailMainBundle:Invoice:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
+			return $this->redirect($this->generateUrl('invoice_show', array('id' => $entity->getId())));
+		}
 
-    /**
-    * Creates a form to create a Invoice entity.
-    *
-    * @param Invoice $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createCreateForm(Invoice $entity)
-    {
-        $form = $this->createForm(new InvoiceType(), $entity, array(
-            'action' => $this->generateUrl('invoice_create'),
-            'method' => 'POST',
-        ));
+		return $this->render('EverFailMainBundle:Invoice:new.html.twig', array(
+					'entity' => $entity,
+					'form' => $form->createView(),
+		));
+	}
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+	/**
+	 * Creates a form to create a Invoice entity.
+	 *
+	 * @param Invoice $entity The entity
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createCreateForm(Invoice $entity) {
+		$form = $this->createForm(new InvoiceType(), $entity, array(
+			'action' => $this->generateUrl('invoice_create'),
+			'method' => 'POST',
+		));
 
-        return $form;
-    }
+		$form->add('submit', 'submit', array('label' => 'Create'));
 
-    /**
-     * Displays a form to create a new Invoice entity.
-     *
-     */
-    public function newAction()
-    {
-        $entity = new Invoice();
-        $form   = $this->createCreateForm($entity);
+		return $form;
+	}
 
-        return $this->render('EverFailMainBundle:Invoice:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
+	/**
+	 * Displays a form to create a new Invoice entity.
+	 *
+	 */
+	public function newAction() {
+		$entity = new Invoice();
+		$form = $this->createCreateForm($entity);
 
-    /**
-     * Finds and displays a Invoice entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return $this->render('EverFailMainBundle:Invoice:new.html.twig', array(
+					'entity' => $entity,
+					'form' => $form->createView(),
+		));
+	}
 
-        $entity = $em->getRepository('EverFailMainBundle:Invoice')->find($id);
+	/**
+	 * Finds and displays a Invoice entity.
+	 *
+	 */
+	public function showAction($id) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Invoice entity.');
-        }
+		$entity = $em->getRepository('EverFailMainBundle:Invoice')->find($id);
 
-        $deleteForm = $this->createDeleteForm($id);
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Invoice entity.');
+		}
 
-        return $this->render('EverFailMainBundle:Invoice:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
-    }
+		$deleteForm = $this->createDeleteForm($id);
 
-    /**
-     * Displays a form to edit an existing Invoice entity.
-     *
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return $this->render('EverFailMainBundle:Invoice:show.html.twig', array(
+					'entity' => $entity,
+					'delete_form' => $deleteForm->createView(),));
+	}
 
-        $entity = $em->getRepository('EverFailMainBundle:Invoice')->find($id);
+	/**
+	 * Displays a form to edit an existing Invoice entity.
+	 *
+	 */
+	public function editAction($id) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Invoice entity.');
-        }
+		$entity = $em->getRepository('EverFailMainBundle:Invoice')->find($id);
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Invoice entity.');
+		}
 
-        return $this->render('EverFailMainBundle:Invoice:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
+		$editForm = $this->createEditForm($entity);
+		$deleteForm = $this->createDeleteForm($id);
 
-    /**
-    * Creates a form to edit a Invoice entity.
-    *
-    * @param Invoice $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Invoice $entity)
-    {
-        $form = $this->createForm(new InvoiceType(), $entity, array(
-            'action' => $this->generateUrl('invoice_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+		return $this->render('EverFailMainBundle:Invoice:edit.html.twig', array(
+					'entity' => $entity,
+					'edit_form' => $editForm->createView(),
+					'delete_form' => $deleteForm->createView(),
+		));
+	}
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+	/**
+	 * Creates a form to edit a Invoice entity.
+	 *
+	 * @param Invoice $entity The entity
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createEditForm(Invoice $entity) {
+		$form = $this->createForm(new InvoiceType(), $entity, array(
+			'action' => $this->generateUrl('invoice_update', array('id' => $entity->getId())),
+			'method' => 'PUT',
+		));
 
-        return $form;
-    }
-    /**
-     * Edits an existing Invoice entity.
-     *
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		$form->add('submit', 'submit', array('label' => 'Update'));
 
-        $entity = $em->getRepository('EverFailMainBundle:Invoice')->find($id);
+		return $form;
+	}
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Invoice entity.');
-        }
+	/**
+	 * Edits an existing Invoice entity.
+	 *
+	 */
+	public function updateAction(Request $request, $id) {
+		$em = $this->getDoctrine()->getManager();
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+		$entity = $em->getRepository('EverFailMainBundle:Invoice')->find($id);
 
-        if ($editForm->isValid()) {
-            $em->flush();
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Invoice entity.');
+		}
 
-            return $this->redirect($this->generateUrl('invoice_edit', array('id' => $id)));
-        }
+		$deleteForm = $this->createDeleteForm($id);
+		$editForm = $this->createEditForm($entity);
+		$editForm->handleRequest($request);
 
-        return $this->render('EverFailMainBundle:Invoice:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-    /**
-     * Deletes a Invoice entity.
-     *
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+		if ($editForm->isValid()) {
+			$em->flush();
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EverFailMainBundle:Invoice')->find($id);
+			return $this->redirect($this->generateUrl('invoice_edit', array('id' => $id)));
+		}
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Invoice entity.');
-            }
+		return $this->render('EverFailMainBundle:Invoice:edit.html.twig', array(
+					'entity' => $entity,
+					'edit_form' => $editForm->createView(),
+					'delete_form' => $deleteForm->createView(),
+		));
+	}
 
-            $em->remove($entity);
-            $em->flush();
-        }
+	/**
+	 * Deletes a Invoice entity.
+	 *
+	 */
+	public function deleteAction(Request $request, $id) {
+		$form = $this->createDeleteForm($id);
+		$form->handleRequest($request);
 
-        return $this->redirect($this->generateUrl('invoice'));
-    }
+		if ($form->isValid()) {
+			$em = $this->getDoctrine()->getManager();
+			$entity = $em->getRepository('EverFailMainBundle:Invoice')->find($id);
 
-    /**
-     * Creates a form to delete a Invoice entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('invoice_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
-    }
+			if (!$entity) {
+				throw $this->createNotFoundException('Unable to find Invoice entity.');
+			}
+
+			$em->remove($entity);
+			$em->flush();
+		}
+
+		return $this->redirect($this->generateUrl('invoice'));
+	}
+
+	/**
+	 * Creates a form to delete a Invoice entity by id.
+	 *
+	 * @param mixed $id The entity id
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createDeleteForm($id) {
+		return $this->createFormBuilder()
+						->setAction($this->generateUrl('invoice_delete', array('id' => $id)))
+						->setMethod('DELETE')
+						->add('submit', 'submit', array('label' => 'Delete'))
+						->getForm()
+		;
+	}
+
 }

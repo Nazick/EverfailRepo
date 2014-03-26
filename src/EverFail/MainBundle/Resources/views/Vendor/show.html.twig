@@ -1,22 +1,22 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Vendor</h1>
-    <br/>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>{{ vendorName }}</th>
-                <td>{{ entity.vendorName }}</td>
-            </tr>
-            <tr>
-                <th>{{ vendorEmail }}</th>
-                <td>{{ entity.email }}</td>
-            </tr>
-        </tbody>
-    </table>
+<h1>Vendor</h1>
+<br/>
+<table class="table">
+	<tbody>
+		<tr>
+			<th>{{ vendorName }}</th>
+			<td>{{ entity.vendorName }}</td>
+		</tr>
+		<tr>
+			<th>{{ vendorEmail }}</th>
+			<td>{{ entity.email }}</td>
+		</tr>
+	</tbody>
+</table>
 
-        <ul class="record_actions">
+<ul class="record_actions">
     <li>
         <a href="{{ path('vendor') }}">
             Back to the list

@@ -4,7 +4,6 @@ namespace EverFail\MainBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use EverFail\MainBundle\Entity\Vendor;
 use EverFail\MainBundle\Form\VendorType;
 
@@ -12,212 +11,205 @@ use EverFail\MainBundle\Form\VendorType;
  * Vendor controller.
  *
  */
-class VendorController extends Controller
-{
+class VendorController extends Controller {
 
-    /**
-     * Lists all Vendor entities.
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+	/**
+	 * Lists all Vendor entities.
+	 *
+	 */
+	public function indexAction() {
+		$em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('EverFailMainBundle:Vendor')->findAll();
+		$entities = $em->getRepository('EverFailMainBundle:Vendor')->findAll();
 
-        return $this->render('EverFailMainBundle:Vendor:index.html.twig', array(
-            'entities' => $entities,
-        ));
-    }
-    /**
-     * Creates a new Vendor entity.
-     *
-     */
-    public function createAction(Request $request)
-    {
-        $entity = new Vendor();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+		return $this->render('EverFailMainBundle:Vendor:index.html.twig', array(
+					'entities' => $entities,
+		));
+	}
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+	/**
+	 * Creates a new Vendor entity.
+	 *
+	 */
+	public function createAction(Request $request) {
+		$entity = new Vendor();
+		$form = $this->createCreateForm($entity);
+		$form->handleRequest($request);
 
-            return $this->redirect($this->generateUrl('vendor_show', array('id' => $entity->getId())));
-        }
+		if ($form->isValid()) {
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($entity);
+			$em->flush();
 
-        return $this->render('EverFailMainBundle:Vendor:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
+			return $this->redirect($this->generateUrl('vendor_show', array('id' => $entity->getId())));
+		}
 
-    /**
-    * Creates a form to create a Vendor entity.
-    *
-    * @param Vendor $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createCreateForm(Vendor $entity)
-    {
-        $form = $this->createForm(new VendorType(), $entity, array(
-            'action' => $this->generateUrl('vendor_create'),
-            'method' => 'POST',
-        ));
+		return $this->render('EverFailMainBundle:Vendor:new.html.twig', array(
+					'entity' => $entity,
+					'form' => $form->createView(),
+		));
+	}
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+	/**
+	 * Creates a form to create a Vendor entity.
+	 *
+	 * @param Vendor $entity The entity
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createCreateForm(Vendor $entity) {
+		$form = $this->createForm(new VendorType(), $entity, array(
+			'action' => $this->generateUrl('vendor_create'),
+			'method' => 'POST',
+		));
 
-        return $form;
-    }
+		$form->add('submit', 'submit', array('label' => 'Create'));
 
-    /**
-     * Displays a form to create a new Vendor entity.
-     *
-     */
-    public function newAction()
-    {
-        $entity = new Vendor();
-        $form   = $this->createCreateForm($entity);
+		return $form;
+	}
 
-        return $this->render('EverFailMainBundle:Vendor:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
+	/**
+	 * Displays a form to create a new Vendor entity.
+	 *
+	 */
+	public function newAction() {
+		$entity = new Vendor();
+		$form = $this->createCreateForm($entity);
 
-    /**
-     * Finds and displays a Vendor entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return $this->render('EverFailMainBundle:Vendor:new.html.twig', array(
+					'entity' => $entity,
+					'form' => $form->createView(),
+		));
+	}
 
-        $entity = $em->getRepository('EverFailMainBundle:Vendor')->find($id);
+	/**
+	 * Finds and displays a Vendor entity.
+	 *
+	 */
+	public function showAction($id) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Vendor entity.');
-        }
+		$entity = $em->getRepository('EverFailMainBundle:Vendor')->find($id);
 
-        $deleteForm = $this->createDeleteForm($id);
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Vendor entity.');
+		}
 
-        return $this->render('EverFailMainBundle:Vendor:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
-    }
+		$deleteForm = $this->createDeleteForm($id);
 
-    /**
-     * Displays a form to edit an existing Vendor entity.
-     *
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return $this->render('EverFailMainBundle:Vendor:show.html.twig', array(
+					'entity' => $entity,
+					'delete_form' => $deleteForm->createView(),));
+	}
 
-        $entity = $em->getRepository('EverFailMainBundle:Vendor')->find($id);
+	/**
+	 * Displays a form to edit an existing Vendor entity.
+	 *
+	 */
+	public function editAction($id) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Vendor entity.');
-        }
+		$entity = $em->getRepository('EverFailMainBundle:Vendor')->find($id);
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Vendor entity.');
+		}
 
-        return $this->render('EverFailMainBundle:Vendor:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
+		$editForm = $this->createEditForm($entity);
+		$deleteForm = $this->createDeleteForm($id);
 
-    /**
-    * Creates a form to edit a Vendor entity.
-    *
-    * @param Vendor $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Vendor $entity)
-    {
-        $form = $this->createForm(new VendorType(), $entity, array(
-            'action' => $this->generateUrl('vendor_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+		return $this->render('EverFailMainBundle:Vendor:edit.html.twig', array(
+					'entity' => $entity,
+					'edit_form' => $editForm->createView(),
+					'delete_form' => $deleteForm->createView(),
+		));
+	}
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+	/**
+	 * Creates a form to edit a Vendor entity.
+	 *
+	 * @param Vendor $entity The entity
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createEditForm(Vendor $entity) {
+		$form = $this->createForm(new VendorType(), $entity, array(
+			'action' => $this->generateUrl('vendor_update', array('id' => $entity->getId())),
+			'method' => 'PUT',
+		));
 
-        return $form;
-    }
-    /**
-     * Edits an existing Vendor entity.
-     *
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		$form->add('submit', 'submit', array('label' => 'Update'));
 
-        $entity = $em->getRepository('EverFailMainBundle:Vendor')->find($id);
+		return $form;
+	}
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Vendor entity.');
-        }
+	/**
+	 * Edits an existing Vendor entity.
+	 *
+	 */
+	public function updateAction(Request $request, $id) {
+		$em = $this->getDoctrine()->getManager();
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+		$entity = $em->getRepository('EverFailMainBundle:Vendor')->find($id);
 
-        if ($editForm->isValid()) {
-            $em->flush();
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Vendor entity.');
+		}
 
-            return $this->redirect($this->generateUrl('vendor_edit', array('id' => $id)));
-        }
+		$deleteForm = $this->createDeleteForm($id);
+		$editForm = $this->createEditForm($entity);
+		$editForm->handleRequest($request);
 
-        return $this->render('EverFailMainBundle:Vendor:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-    /**
-     * Deletes a Vendor entity.
-     *
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+		if ($editForm->isValid()) {
+			$em->flush();
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EverFailMainBundle:Vendor')->find($id);
+			return $this->redirect($this->generateUrl('vendor_edit', array('id' => $id)));
+		}
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Vendor entity.');
-            }
+		return $this->render('EverFailMainBundle:Vendor:edit.html.twig', array(
+					'entity' => $entity,
+					'edit_form' => $editForm->createView(),
+					'delete_form' => $deleteForm->createView(),
+		));
+	}
 
-            $em->remove($entity);
-            $em->flush();
-        }
+	/**
+	 * Deletes a Vendor entity.
+	 *
+	 */
+	public function deleteAction(Request $request, $id) {
+		$form = $this->createDeleteForm($id);
+		$form->handleRequest($request);
 
-        return $this->redirect($this->generateUrl('vendor'));
-    }
+		if ($form->isValid()) {
+			$em = $this->getDoctrine()->getManager();
+			$entity = $em->getRepository('EverFailMainBundle:Vendor')->find($id);
 
-    /**
-     * Creates a form to delete a Vendor entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('vendor_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
-    }
+			if (!$entity) {
+				throw $this->createNotFoundException('Unable to find Vendor entity.');
+			}
+
+			$em->remove($entity);
+			$em->flush();
+		}
+
+		return $this->redirect($this->generateUrl('vendor'));
+	}
+
+	/**
+	 * Creates a form to delete a Vendor entity by id.
+	 *
+	 * @param mixed $id The entity id
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createDeleteForm($id) {
+		return $this->createFormBuilder()
+						->setAction($this->generateUrl('vendor_delete', array('id' => $id)))
+						->setMethod('DELETE')
+						->add('submit', 'submit', array('label' => 'Delete'))
+						->getForm()
+		;
+	}
+
 }

@@ -1,30 +1,26 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Category</h1>
-    <br/>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>{{ categoryName }}</th>
-                <td>{{ entity.categoryName }}</td>
-            </tr>
-            <tr>
-                <th>{{ description }}</th>
-                <td>{{ entity.description }}</td>
-            </tr>
-            <tr>
-                <th>{{ minStock }}</th>
-                <td>{{ entity.minStock }}</td>
-            </tr>
-            <tr>
-                <th>{{ stock }}</th>
-                <td>{{ entity.stock }}</td>
-            </tr>
-        </tbody>
-    </table>
+<h1>Category</h1>
 
-        <ul class="record_actions">
+<table class="table">
+	<tbody>
+		<tr>
+			<th>{{ categoryName }}</th>
+			<td>{{ entity.categoryName }}</td>
+		</tr>
+		<tr>
+			<th>{{ description }}</th>
+			<td>{{ entity.description }}</td>
+		</tr>
+		<tr>
+			<th>{{ minStock }}</th>
+			<td>{{ entity.minStock }}</td>
+		</tr>
+	</tbody>
+</table>
+
+<ul class="record_actions">
     <li>
         <a href="{{ path('category') }}">
             Back to the list

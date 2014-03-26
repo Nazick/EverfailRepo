@@ -1,26 +1,26 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Invoice</h1>
-    <br/>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>{{ paymentDate }}</th>
-                <td>{{ entity.paymentDate|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>{{ paymentStatus }}</th>
-                <td>{{ entity.paymentStatus }}</td>
-            </tr>
-            <tr>
-                <th>{{ paymentMethod }}</th>
-                <td>{{ entity.paymentMethod }}</td>
-            </tr>
-        </tbody>
-    </table>
+<h1>Invoice</h1>
+<br/>
+<table class="table">
+	<tbody>
+		<tr>
+			<th>{{ paymentDate }}</th>
+			<td>{{ entity.paymentDate|date('Y-m-d H:i:s') }}</td>
+		</tr>
+		<tr>
+			<th>{{ paymentStatus }}</th>
+			<td>{{ entity.paymentStatus }}</td>
+		</tr>
+		<tr>
+			<th>{{ paymentMethod }}</th>
+			<td>{{ entity.paymentMethod }}</td>
+		</tr>
+	</tbody>
+</table>
 
-        <ul class="record_actions">
+<ul class="record_actions">
     <li>
         <a href="{{ path('invoice') }}">
             Back to the list

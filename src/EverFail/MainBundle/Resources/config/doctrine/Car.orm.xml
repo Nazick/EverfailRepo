@@ -10,5 +10,6 @@
     <field name="regNumber" type="string" column="Reg_Number" length="10" nullable="false"/>
     <field name="model" type="string" column="Model" length="20" nullable="true"/>
     <field name="manufactureYear" type="date" column="Manufacture_Year" nullable="true"/>
+    <field name="mileage" type="integer" column="Mileage" nullable="true"/>
   </entity>
 </doctrine-mapping>

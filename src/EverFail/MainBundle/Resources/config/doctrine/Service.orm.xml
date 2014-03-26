@@ -6,18 +6,15 @@
       <index name="Cust_ID_fk" columns="Cust_ID"/>
       <index name="Invoice_ID_idx" columns="Invoice_ID"/>
     </indexes>
-    <unique-constraints>
-      <unique-constraint name="ID_UNIQUE" columns="ID"/>
-    </unique-constraints>
     <id name="id" type="integer" column="ID">
       <generator strategy="IDENTITY"/>
     </id>
     <field name="serviceDate" type="date" column="Service_Date" nullable="false"/>
-    <field name="serviceCharge" type="decimal" column="Service_Charge" precision="10" scale="2" nullable="true"/>
+    <field name="serviceCharge" type="decimal" column="Service_Charge" precision="10" scale="2" nullable="false"/>
     <field name="note" type="string" column="Note" length="45" nullable="true"/>
-    <many-to-one field="car" target-entity="Car">
+    <many-to-one field="invoice" target-entity="Invoice">
       <join-columns>
-        <join-column name="Car_ID" referenced-column-name="ID"/>
+        <join-column name="Invoice_ID" referenced-column-name="ID"/>
       </join-columns>
     </many-to-one>
     <many-to-one field="cust" target-entity="Customer">
@@ -25,9 +22,9 @@
         <join-column name="Cust_ID" referenced-column-name="ID"/>
       </join-columns>
     </many-to-one>
-    <many-to-one field="invoice" target-entity="Invoice">
+    <many-to-one field="car" target-entity="Car">
       <join-columns>
-        <join-column name="Invoice_ID" referenced-column-name="ID"/>
+        <join-column name="Car_ID" referenced-column-name="ID"/>
       </join-columns>
     </many-to-one>
   </entity>

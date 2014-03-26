@@ -1,12 +1,12 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-
 <div class="form-signin">
     <h1>Car creation</h1>
     <br/>
     {{ form(form) }}
 </div>
+
 <ul class="record_actions">
     <li>
         <a href="{{ path('car') }}">

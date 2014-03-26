@@ -4,7 +4,6 @@ namespace EverFail\MainBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use EverFail\MainBundle\Entity\Part;
 use EverFail\MainBundle\Form\PartType;
 
@@ -12,212 +11,205 @@ use EverFail\MainBundle\Form\PartType;
  * Part controller.
  *
  */
-class PartController extends Controller
-{
+class PartController extends Controller {
 
-    /**
-     * Lists all Part entities.
-     *
-     */
-    public function indexAction()
-    {
-        $em = $this->getDoctrine()->getManager();
+	/**
+	 * Lists all Part entities.
+	 *
+	 */
+	public function indexAction() {
+		$em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('EverFailMainBundle:Part')->findAll();
+		$entities = $em->getRepository('EverFailMainBundle:Part')->findAll();
 
-        return $this->render('EverFailMainBundle:Part:index.html.twig', array(
-            'entities' => $entities,
-        ));
-    }
-    /**
-     * Creates a new Part entity.
-     *
-     */
-    public function createAction(Request $request)
-    {
-        $entity = new Part();
-        $form = $this->createCreateForm($entity);
-        $form->handleRequest($request);
+		return $this->render('EverFailMainBundle:Part:index.html.twig', array(
+					'entities' => $entities,
+		));
+	}
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($entity);
-            $em->flush();
+	/**
+	 * Creates a new Part entity.
+	 *
+	 */
+	public function createAction(Request $request) {
+		$entity = new Part();
+		$form = $this->createCreateForm($entity);
+		$form->handleRequest($request);
 
-            return $this->redirect($this->generateUrl('part_show', array('id' => $entity->getId())));
-        }
+		if ($form->isValid()) {
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($entity);
+			$em->flush();
 
-        return $this->render('EverFailMainBundle:Part:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
+			return $this->redirect($this->generateUrl('part_show', array('id' => $entity->getId())));
+		}
 
-    /**
-    * Creates a form to create a Part entity.
-    *
-    * @param Part $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createCreateForm(Part $entity)
-    {
-        $form = $this->createForm(new PartType(), $entity, array(
-            'action' => $this->generateUrl('part_create'),
-            'method' => 'POST',
-        ));
+		return $this->render('EverFailMainBundle:Part:new.html.twig', array(
+					'entity' => $entity,
+					'form' => $form->createView(),
+		));
+	}
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+	/**
+	 * Creates a form to create a Part entity.
+	 *
+	 * @param Part $entity The entity
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createCreateForm(Part $entity) {
+		$form = $this->createForm(new PartType(), $entity, array(
+			'action' => $this->generateUrl('part_create'),
+			'method' => 'POST',
+		));
 
-        return $form;
-    }
+		$form->add('submit', 'submit', array('label' => 'Create'));
 
-    /**
-     * Displays a form to create a new Part entity.
-     *
-     */
-    public function newAction()
-    {
-        $entity = new Part();
-        $form   = $this->createCreateForm($entity);
+		return $form;
+	}
 
-        return $this->render('EverFailMainBundle:Part:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
-    }
+	/**
+	 * Displays a form to create a new Part entity.
+	 *
+	 */
+	public function newAction() {
+		$entity = new Part();
+		$form = $this->createCreateForm($entity);
 
-    /**
-     * Finds and displays a Part entity.
-     *
-     */
-    public function showAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return $this->render('EverFailMainBundle:Part:new.html.twig', array(
+					'entity' => $entity,
+					'form' => $form->createView(),
+		));
+	}
 
-        $entity = $em->getRepository('EverFailMainBundle:Part')->find($id);
+	/**
+	 * Finds and displays a Part entity.
+	 *
+	 */
+	public function showAction($id) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Part entity.');
-        }
+		$entity = $em->getRepository('EverFailMainBundle:Part')->find($id);
 
-        $deleteForm = $this->createDeleteForm($id);
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Part entity.');
+		}
 
-        return $this->render('EverFailMainBundle:Part:show.html.twig', array(
-            'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
-    }
+		$deleteForm = $this->createDeleteForm($id);
 
-    /**
-     * Displays a form to edit an existing Part entity.
-     *
-     */
-    public function editAction($id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		return $this->render('EverFailMainBundle:Part:show.html.twig', array(
+					'entity' => $entity,
+					'delete_form' => $deleteForm->createView(),));
+	}
 
-        $entity = $em->getRepository('EverFailMainBundle:Part')->find($id);
+	/**
+	 * Displays a form to edit an existing Part entity.
+	 *
+	 */
+	public function editAction($id) {
+		$em = $this->getDoctrine()->getManager();
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Part entity.');
-        }
+		$entity = $em->getRepository('EverFailMainBundle:Part')->find($id);
 
-        $editForm = $this->createEditForm($entity);
-        $deleteForm = $this->createDeleteForm($id);
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Part entity.');
+		}
 
-        return $this->render('EverFailMainBundle:Part:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
+		$editForm = $this->createEditForm($entity);
+		$deleteForm = $this->createDeleteForm($id);
 
-    /**
-    * Creates a form to edit a Part entity.
-    *
-    * @param Part $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
-    private function createEditForm(Part $entity)
-    {
-        $form = $this->createForm(new PartType(), $entity, array(
-            'action' => $this->generateUrl('part_update', array('id' => $entity->getId())),
-            'method' => 'PUT',
-        ));
+		return $this->render('EverFailMainBundle:Part:edit.html.twig', array(
+					'entity' => $entity,
+					'edit_form' => $editForm->createView(),
+					'delete_form' => $deleteForm->createView(),
+		));
+	}
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+	/**
+	 * Creates a form to edit a Part entity.
+	 *
+	 * @param Part $entity The entity
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createEditForm(Part $entity) {
+		$form = $this->createForm(new PartType(), $entity, array(
+			'action' => $this->generateUrl('part_update', array('id' => $entity->getId())),
+			'method' => 'PUT',
+		));
 
-        return $form;
-    }
-    /**
-     * Edits an existing Part entity.
-     *
-     */
-    public function updateAction(Request $request, $id)
-    {
-        $em = $this->getDoctrine()->getManager();
+		$form->add('submit', 'submit', array('label' => 'Update'));
 
-        $entity = $em->getRepository('EverFailMainBundle:Part')->find($id);
+		return $form;
+	}
 
-        if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Part entity.');
-        }
+	/**
+	 * Edits an existing Part entity.
+	 *
+	 */
+	public function updateAction(Request $request, $id) {
+		$em = $this->getDoctrine()->getManager();
 
-        $deleteForm = $this->createDeleteForm($id);
-        $editForm = $this->createEditForm($entity);
-        $editForm->handleRequest($request);
+		$entity = $em->getRepository('EverFailMainBundle:Part')->find($id);
 
-        if ($editForm->isValid()) {
-            $em->flush();
+		if (!$entity) {
+			throw $this->createNotFoundException('Unable to find Part entity.');
+		}
 
-            return $this->redirect($this->generateUrl('part_edit', array('id' => $id)));
-        }
+		$deleteForm = $this->createDeleteForm($id);
+		$editForm = $this->createEditForm($entity);
+		$editForm->handleRequest($request);
 
-        return $this->render('EverFailMainBundle:Part:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
-    /**
-     * Deletes a Part entity.
-     *
-     */
-    public function deleteAction(Request $request, $id)
-    {
-        $form = $this->createDeleteForm($id);
-        $form->handleRequest($request);
+		if ($editForm->isValid()) {
+			$em->flush();
 
-        if ($form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('EverFailMainBundle:Part')->find($id);
+			return $this->redirect($this->generateUrl('part_edit', array('id' => $id)));
+		}
 
-            if (!$entity) {
-                throw $this->createNotFoundException('Unable to find Part entity.');
-            }
+		return $this->render('EverFailMainBundle:Part:edit.html.twig', array(
+					'entity' => $entity,
+					'edit_form' => $editForm->createView(),
+					'delete_form' => $deleteForm->createView(),
+		));
+	}
 
-            $em->remove($entity);
-            $em->flush();
-        }
+	/**
+	 * Deletes a Part entity.
+	 *
+	 */
+	public function deleteAction(Request $request, $id) {
+		$form = $this->createDeleteForm($id);
+		$form->handleRequest($request);
 
-        return $this->redirect($this->generateUrl('part'));
-    }
+		if ($form->isValid()) {
+			$em = $this->getDoctrine()->getManager();
+			$entity = $em->getRepository('EverFailMainBundle:Part')->find($id);
 
-    /**
-     * Creates a form to delete a Part entity by id.
-     *
-     * @param mixed $id The entity id
-     *
-     * @return \Symfony\Component\Form\Form The form
-     */
-    private function createDeleteForm($id)
-    {
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('part_delete', array('id' => $id)))
-            ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
-            ->getForm()
-        ;
-    }
+			if (!$entity) {
+				throw $this->createNotFoundException('Unable to find Part entity.');
+			}
+
+			$em->remove($entity);
+			$em->flush();
+		}
+
+		return $this->redirect($this->generateUrl('part'));
+	}
+
+	/**
+	 * Creates a form to delete a Part entity by id.
+	 *
+	 * @param mixed $id The entity id
+	 *
+	 * @return \Symfony\Component\Form\Form The form
+	 */
+	private function createDeleteForm($id) {
+		return $this->createFormBuilder()
+						->setAction($this->generateUrl('part_delete', array('id' => $id)))
+						->setMethod('DELETE')
+						->add('submit', 'submit', array('label' => 'Delete'))
+						->getForm()
+		;
+	}
+
 }

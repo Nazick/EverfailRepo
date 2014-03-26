@@ -1,26 +1,26 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Service</h1>
-    <br/>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>{{ serviceDate }}</th>
-                <td>{{ entity.serviceDate|date('Y-m-d') }}</td>
-            </tr>
-            <tr>
-                <th>{{ serviceCharge }}</th>
-                <td>{{ entity.serviceCharge }}</td>
-            </tr>
-            <tr>
-                <th>{{ note }}</th>
-                <td>{{ entity.note }}</td>
-            </tr>
-        </tbody>
-    </table>
+<h1>Service</h1>
+<br/>
+<table class="table">
+	<tbody>
+		<tr>
+			<th>{{ serviceDate }}</th>
+			<td>{{ entity.serviceDate|date('Y-m-d') }}</td>
+		</tr>
+		<tr>
+			<th>{{ serviceCharge }}</th>
+			<td>{{ entity.serviceCharge }}</td>
+		</tr>
+		<tr>
+			<th>{{ note }}</th>
+			<td>{{ entity.note }}</td>
+		</tr>
+	</tbody>
+</table>
 
-        <ul class="record_actions">
+<ul class="record_actions">
     <li>
         <a href="{{ path('service') }}">
             Back to the list

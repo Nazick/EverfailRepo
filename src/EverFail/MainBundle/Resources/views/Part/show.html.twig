@@ -1,22 +1,26 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Part</h1>
-    <br/>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>{{ partName }}</th>
-                <td>{{ entity.partName }}</td>
-            </tr>
-            <tr>
-                <th>{{ price }}</th>
-                <td>{{ entity.price }}</td>
-            </tr>
-        </tbody>
-    </table>
+<h1>Part</h1>
 
-        <ul class="record_actions">
+<table class="table">
+	<tbody>
+		<tr>
+			<th>{{ price }}</th>
+			<td>{{ entity.price }}</td>
+		</tr>
+		<tr>
+			<th>{{ purchasedDate }}</th>
+			<td>{{ entity.purchasedDate|date('Y-m-d') }}</td>
+		</tr>
+		<tr>
+			<th>{{ vendorWarranty }}</th>
+			<td>{{ entity.vendorWarranty }}</td>
+		</tr>
+	</tbody>
+</table>
+
+<ul class="record_actions">
     <li>
         <a href="{{ path('part') }}">
             Back to the list

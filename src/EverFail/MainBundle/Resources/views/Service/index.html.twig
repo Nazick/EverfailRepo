@@ -1,38 +1,38 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Service List</h1>
-    <ul>
-            <a href="{{ path('service_new') }}">
-                <h3>Create a Service</h3>
-            </a>
-    </ul>
-    <br/>
+<h1>Service List</h1>
+<ul>
+	<a href="{{ path('service_new') }}">
+		<h3>Create a Service</h3>
+	</a>
+</ul>
+<br/>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>{{ serviceDate }}</th>
-                <th>{{ serviceCharge }}</th>
-                <th>{{ note }}</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
+<table class="table">
+	<thead>
+		<tr>
+			<th>{{ serviceDate }}</th>
+			<th>{{ serviceCharge }}</th>
+			<th>{{ note }}</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
         {% for entity in entities %}
             <tr>
                 <td><a href="{{ path('service_show', { 'id': entity.id }) }}">{{ entity.serviceDate|date('Y-m-d') }}</a></td>
                 <td>{{ entity.serviceCharge }}</td>
                 <td>{{ entity.note }}</td>
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('service_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('service_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+					<ul>
+						<li>
+							<a href="{{ path('service_show', { 'id': entity.id }) }}">show</a>
+						</li>
+						<li>
+							<a href="{{ path('service_edit', { 'id': entity.id }) }}">edit</a>
+						</li>
+					</ul>
                 </td>
             </tr>
         {% endfor %}

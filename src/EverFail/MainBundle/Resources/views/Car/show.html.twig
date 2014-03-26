@@ -1,26 +1,30 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Car</h1>
-    <br/>
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>{{ regNumber }}</th>
-                <td>{{ entity.regNumber }}</td>
-            </tr>
-            <tr>
-                <th>{{ model }}</th>
-                <td>{{ entity.model }}</td>
-            </tr>
-            <tr>
-                <th>{{ manufactureYear }}</th>
-                <td>{{ entity.manufactureYear|date('Y-m-d') }}</td>
-            </tr>
-        </tbody>
-    </table>
+<h1>Car</h1>
 
-        <ul class="record_actions">
+<table class="table">
+	<tbody>
+		<tr>
+			<th>{{ regNumber }}</th>
+			<td>{{ entity.regNumber }}</td>
+		</tr>
+		<tr>
+			<th>{{ model }}</th>
+			<td>{{ entity.model }}</td>
+		</tr>
+		<tr>
+			<th>{{ manufactureYear }}</th>
+			<td>{{ entity.manufactureYear|date('Y') }}</td>
+		</tr>
+		<tr>
+			<th>{{ mileage }}</th>
+			<td>{{ entity.mileage }}</td>
+		</tr>
+	</tbody>
+</table>
+
+<ul class="record_actions">
     <li>
         <a href="{{ path('car') }}">
             Back to the list
