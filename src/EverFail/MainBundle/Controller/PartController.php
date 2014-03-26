@@ -31,9 +31,9 @@ class PartController extends Controller {
      * Creates a new Part entity.
      *
      */
-    public function createAction(Request $request) {
+    public function createAction(Request $request,$VenId,$CatId) {
         $entity = new Part();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity,$VenId,$CatId);
         $form->handleRequest($request);
         $amounts = $form->get('amount');
         $amount = $amounts->getData();
@@ -45,7 +45,7 @@ class PartController extends Controller {
                     $em->persist($entity);
                     $em->flush();
                     $entity = new Part();
-                    $form = $this->createCreateForm($entity);
+                    $form = $this->createCreateForm($entity,$VenId,$CatId);
                     $form->handleRequest($request);
                 }
             }
@@ -64,9 +64,12 @@ class PartController extends Controller {
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Part $entity) {
-        $form = $this->createForm(new PartType(), $entity, array(
-            'action' => $this->generateUrl('part_create'),
+    private function createCreateForm(Part $entity,$VenId,$CatId) {
+        $em = $this->getDoctrine()->getManager();
+        $vendor = $em->getRepository('EverFailMainBundle:Vendor')->findOneBy(array('id' => $VenId));
+        $category = $em->getRepository('EverFailMainBundle:Category')->findOneBy(array('id' => $CatId));
+        $form = $this->createForm(new PartType($vendor,$category), $entity, array(
+            'action' => $this->generateUrl('part_create',array('VenId'=>$VenId,'CatId'=>$CatId)),
             'method' => 'POST',
         ));
 
@@ -79,9 +82,9 @@ class PartController extends Controller {
      * Displays a form to create a new Part entity.
      *
      */
-    public function newAction() {
+    public function newAction($VenId,$CatId) {
         $entity = new Part();
-        $form = $this->createCreateForm($entity);
+        $form = $this->createCreateForm($entity,$VenId,$CatId);
 
         return $this->render('EverFailMainBundle:Part:new.html.twig', array(
                     'entity' => $entity,

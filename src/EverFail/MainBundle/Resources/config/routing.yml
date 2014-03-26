@@ -76,6 +76,11 @@ category_new:
 part_new:
     pattern:  /{VenId}/{CatId}/newPart
     defaults: { _controller: "EverFailMainBundle:Part:new" }
+
+part_create:
+    pattern:  /{VenId}/{CatId}/create
+    defaults: { _controller: "EverFailMainBundle:Part:create" }
+    requirements: { _method: post }
         
 
         
